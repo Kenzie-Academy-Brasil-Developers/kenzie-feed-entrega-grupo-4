@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
+import { RegisterPage } from "../pages/RegisterPage";
 import { LoginPage } from "../pages/LoginPage";
-import { RegisterPage } from "../pages/ResgisterPage";
 import { DashboardPage } from "../pages/DashboardPage";
-// import { ErrorPage } from "../pages/ErrorPage";
+
 export const RoutesMain = () => {
   return (
     <Routes>

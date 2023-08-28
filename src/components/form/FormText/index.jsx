@@ -1,10 +1,8 @@
-import { forwardRef } from "react";
-
-export const FormText = forwardRef(({ ...rest }, ref) => {
+export const FormText = () => {
   return (
     <fieldset>
-        <input ref={ref} {...rest} />
-        {error ? <p>{error.message}</p> : null}
+        <input />
+        {/* {error ? <p>{error.message}</p> : null} */}
     </fieldset>
   );
-});
+};

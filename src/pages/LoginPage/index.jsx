@@ -5,7 +5,6 @@ export const LoginPage = () => {
   const { register, handleSubmit } = useForm({});
 
   const submit = (formData) => {
-    console.log(formData);
   };
   return (
     <main>
