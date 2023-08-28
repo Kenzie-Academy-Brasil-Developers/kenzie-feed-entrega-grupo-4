@@ -1,0 +1,23 @@
+.input{
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 17px;
+  width: 370px;
+  height: 56px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255,  0.5);
+  background: var(--color-white);
+  color: rgba(255, 255, 255,  0.5);
+
+}
+.big-input{
+    font-family: var(--font-body);
+    font-size: 21px;
+    font-weight: 400;
+    width: 370px;
+    height: 64px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255,  0.5);
+    background: var(--color-white);
+    color: rgba(255, 255, 255,  0.5);
+}
