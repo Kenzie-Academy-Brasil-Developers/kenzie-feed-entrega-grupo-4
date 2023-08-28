@@ -1,7 +1,7 @@
-import { forwardRef, useState } from "react";
+import {  useState } from "react";
 import { MdVisibility, MdVisibilityOff } from "react-icons/md";
 
-export const FormPassword = forwardRef(({ ...rest }, ref) => {
+export const FormPassword = () => {
   const [isHidden, setIsHidden] = useState(true);
 
   return (
@@ -9,8 +9,6 @@ export const FormPassword = forwardRef(({ ...rest }, ref) => {
         <div>
           <input
             type={isHidden ? "password" : "text"}
-            ref={ref}
-            {...rest}
           />
           <button
             type="button"
@@ -19,7 +17,7 @@ export const FormPassword = forwardRef(({ ...rest }, ref) => {
             {isHidden ? <MdVisibility /> : <MdVisibilityOff />}
           </button>
         </div>
-        {error ? <p>{error.message}</p> : null}
+        {/* {error ? <p>{error.message}</p> : null} */}
     </fieldset>
   );
-});
+};

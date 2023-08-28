@@ -1,26 +1,24 @@
-import img from "../RegisterPage/arrow.svg";
-import { useNavigate } from "react-router-dom";
-import { FormText } from "../../componets/forms/FormText";
-import { FormPassword } from "../../componets/forms/FormPassword";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { formSchema } from "./formSchema";
+// import { useNavigate } from "react-router-dom";
+// import { useForm } from "react-hook-form";
+// import { zodResolver } from "@hookform/resolvers/zod";
+// import { formSchema } from "./formSchema";
 import React from "react";
-import { UserContext } from "../../providers/userContext";
-import { useContext } from "react";
+// import { UserContext } from "../../providers/userContext";
+// import { useContext } from "react";
+import { FormText } from "../../components/form/FormText";
+import { FormPassword } from "../../components/form/FormPassword";
 // import styles from "./style.module.scss";
 
 
 export const RegisterPage = () => {
-    const navigate = useNavigate();
-    const { registerUser } = useContext(UserContext);
-    const {
-      register,
-      handleSubmit,
-      formState: { errors },
-    } = useForm({
-      resolver: zodResolver(formSchema),
-    });
+    // const { registerUser } = useContext(UserContext);
+    // const {
+    //   register,
+    //   handleSubmit,
+    //   formState: { errors },
+    // } = useForm({
+    //   resolver: zodResolver(formSchema),
+    // });
   
     const submitForm = (formData) => {
       registerUser(formData);
@@ -28,39 +26,32 @@ export const RegisterPage = () => {
   
     return (
       <main>
-        <img src={img} alt="return" />
         <button onClick={() => navigate("/")}>Voltar</button>
         <section>
           <h1>Cadastre um usuário</h1>
           <span>Preencha os campos corretamente para fazer login</span>
   
           <div>
-            <form onSubmit={handleSubmit(submitForm)}>
+            <form>
               <FormText
-                id={"name"}
-                type={"text"}
-                placeholder={"Name"}
-                {...register("name")}
-                error={errors.name}
+              id={"name"}
+              type={"text"}
+              placeholder={"Nome"}
               />
-  
               <FormText
-                id={"email"}
-                type={"email"}
-                placeholder={"Name"}
-                {...register("email")}
-                error={errors.email}
+               id={"email"}
+               type={"email"}
+               placeholder={"Email"}
               />
               <FormPassword
-                id={"password"}
-                placeholder={"Senha"}
-                {...register("password")}
-                error={errors.password}
+               id={"password"}
+               type={"password"}
+               placeholder={"Senha"}
               />
               <FormPassword
-                placeholder={"Confirmar senha"}
-                {...register("confirmPassword")}
-                error={errors.confirmPassword}
+              id={"password"}
+              type={"password"}
+              placeholder={"Confirmar senha"}
               />
               <div>
                 <button type="submit">Cadastrar-se</button>
