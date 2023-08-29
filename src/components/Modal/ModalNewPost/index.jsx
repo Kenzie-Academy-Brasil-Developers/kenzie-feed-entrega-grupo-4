@@ -41,7 +41,7 @@ export const ModalNewPost = ({ children }) => {
     <div role="dialog" className={styles.modalOverlay}>
       <div ref={modalNewPostRef} className={styles.modalBox}>
         <div className={styles.modalHeader}>
-          <p className="">Criar Post</p>
+          <p className="">Novo post</p>
           <button
             ref={buttonRef}
             className={styles.closeButton}
