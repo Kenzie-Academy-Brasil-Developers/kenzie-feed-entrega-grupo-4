@@ -12,7 +12,6 @@ export const DashboardPage = () => {
     useContext(PostsContext);
   return (
     <>
-
       {isOpenModalNewPost ? <ModalNewPost>teste</ModalNewPost> : null}
       <main>
         <div>

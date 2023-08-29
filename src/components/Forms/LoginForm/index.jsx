@@ -2,11 +2,14 @@ import { useForm } from "react-hook-form";
 import { Input } from "../Input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginFormSchema } from "./loginFormSchema";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { InputPassword } from "../InputPassword";
+import { UserContext } from "../../../providers/UserContext";
 
 export const LoginForm = () => {
+  const { userLogin } = useContext(UserContext);
+
   const {
     register,
     handleSubmit,
@@ -19,7 +22,7 @@ export const LoginForm = () => {
   const [loading, setLoading] = useState(false);
 
   const submit = (formData) => {
-    console.log(formData);
+    userLogin(formData);
   };
 
   return (
