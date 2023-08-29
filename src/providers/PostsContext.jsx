@@ -18,7 +18,7 @@ export const PostsProvider = ({ children }) => {
     client.invalidateQueries({ queryKey: "post" });
   };
 
-  const { data: postList } = useQuery({
+  const { data: postList, isLoading } = useQuery({
     queryKey: ["post"],
     queryFn: async () => {
       const { data } = await apiFeed.get("posts?_embed=likes");
@@ -92,6 +92,7 @@ export const PostsProvider = ({ children }) => {
         setIsOpenModalNewPost,
         dataPost,
         setDataPost,
+        isLoading,
       }}
     >
       {children}

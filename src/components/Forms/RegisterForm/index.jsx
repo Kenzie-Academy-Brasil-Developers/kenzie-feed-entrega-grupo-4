@@ -8,6 +8,7 @@ import { UserContext } from "../../../providers/UserContext";
 
 export const RegisterForm = () => {
   const { userRegister } = useContext(UserContext);
+
   const {
     register,
     handleSubmit,
