@@ -1,7 +1,7 @@
 import logo from "../../assets/logo.svg";
 import { MdLogout } from "react-icons/md";
 import { IoMdAddCircleOutline } from "react-icons/io";
-import { FeedList } from "../../components/FeedList";
+import { PostList } from "../../components/PostList";
 import { Footer } from "../../components/Footer";
 import { PostsContext } from "../../providers/PostsContext";
 import { ModalNewPost } from "../../components/Modal/ModalNewPost";
@@ -26,7 +26,7 @@ export const DashboardPage = () => {
           </button>
         </div>
         <div>
-          <FeedList />
+          <PostList />
         </div>
       </main>
       <Footer />
