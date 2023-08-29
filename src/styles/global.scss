@@ -1,10 +1,16 @@
-:root{
-    --color-black: #000000;
-    --color-white: #ffffff;
-    --color-grey: #F3F3F3;
-    --color-blue: #55A3FF;
+:root {
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-grey: #f3f3f3;
+  --color-blue: #55a3ff;
 
-    --font-titles: 'Lora', serif;
-    --font-body: 'Inter', sans-serif;
+  --font-titles: "Lora", serif;
+  --font-body: "Inter", sans-serif;
+}
 
+.container {
+  margin: 0 auto;
+  width: 1260px;
+  max-width: 100%;
+  padding: 1rem 1rem 0 0;
 }

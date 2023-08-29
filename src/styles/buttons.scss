@@ -1,50 +1,47 @@
-.btn-solid-s{
-    font-family: var(--font-body);
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 16.94px;
-    color: var(--color-white);
-    background: var(--color-blue);
-    width: 112px;
-    height: 46px;
-    border-radius: 4px;
-
+.btn-solid-s {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16.94px;
+  color: var(--color-white);
+  background: var(--color-blue);
+  width: 112px;
+  height: 46px;
+  border-radius: 4px;
+  border: none;
 }
 
-.btn-solid-m{
-    font-family: var(--font-body);
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 16.94px;
-    color: var(--color-white);
-    background: var(--color-blue);
-    width: 145px;
-    height: 54px;
-    border-radius: 4px;
-
+.btn-solid-m {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16.94px;
+  color: var(--color-white);
+  background: var(--color-blue);
+  width: 145px;
+  height: 54px;
+  border-radius: 4px;
 }
-.btn-solid-b{
-    font-family: var(--font-body);
-    font-size: 18px;
-    width: 166px;
-    height: 64px;
-    line-height: 21.78px;
-    font-weight: 700;
-    border-radius: 4px;
-    color: var(--color-white);
-    background: var(--color-blue);
-
-
+.btn-solid-b {
+  font-family: var(--font-body);
+  font-size: 18px;
+  width: 166px;
+  height: 64px;
+  line-height: 21.78px;
+  font-weight: 700;
+  border-radius: 4px;
+  color: var(--color-white);
+  background: var(--color-blue);
 }
 
-.btn-outline{
-    font-family: var(--font-body);
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 16.94px;
-    border-radius: 4px;
-    width: 133px;
-    height: 43px;
-    color: var(--color-blue);
-    background: var(--color-white);
+.btn-outline {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16.94px;
+  border-radius: 4px;
+  width: 133px;
+  height: 43px;
+  color: var(--color-blue);
+  background: var(--color-white);
 }
