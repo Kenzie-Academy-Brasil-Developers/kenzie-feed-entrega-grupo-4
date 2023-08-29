@@ -1,10 +1,41 @@
 import { createContext } from "react";
-import { useMutation } from "react-query";
 import { apiFeed } from "../services/api";
+import { useMutation, useQuery, useQueryClient } from "react-query";
+import { toast } from "react-toastify";
+
 
 export const PostsContext = createContext({});
 
 export const PostsProvider = ({ children }) => {
+  const revalidate = () => {
+    client.invalidateQueries({ queryKey: "post" });
+     const client = useQueryClient();
+     const { data: postList } = useQuery({
+    queryKey: ["post"],
+    queryFn: async () => {
+      return await apiFeed.get("posts?_embed=likes");
+    },
+  });
+      const editPost = useMutation({
+    mutationFn: async (formData, postId) => {
+      const { token, userId, name } = JSON.parse(
+        localStorage.getItem("@UserData")
+      );
+      const newPost = [...formData, { userId: userId, name: name }];
+      return await apiFeed.put(`/posts/${postId}`, newPost, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    },
+      onSuccess: () => {
+      revalidate();
+      toast.success("Post editado com sucesso!");
+    },
+  });
+  
+
+
   const createPost = useMutation({
     mutationFn: (postData) => {
       const { userId, name, token } = JSON.parse(
@@ -20,22 +51,17 @@ export const PostsProvider = ({ children }) => {
           "https://res.cloudinary.com/dsbkp5841/image/upload/v1688391686/Rectangle_4_lvbqtd.jpg",
       };
       return apiFeed.post("/posts", newPost, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-    },
+  };
     onSuccess: (teste) => {
       console.log(teste);
     },
     onError: (err) => {
-      console.log(err);
-    },
-  });
+      console.log(err);}}
+
 
   return (
-    <PostsContext.Provider value={{ createPost }}>
-      {children}
+    <PostsContext.Provider value={{ createPost ,editPost, postList }}>
+    {children}
     </PostsContext.Provider>
   );
 };
