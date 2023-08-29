@@ -1,10 +1,10 @@
-import { FeedCard } from "./FeedCard";
+import { PostCard } from "./PostCard";
 import style from "./style.module.scss";
 
-export const FeedList = () => {
+export const PostList = () => {
   return (
     <ul className={style.postList}>
-      <FeedCard />
+      <PostCard />
     </ul>
   );
 };

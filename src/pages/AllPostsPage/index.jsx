@@ -1,4 +1,4 @@
-import { FeedList } from "../../components/FeedList";
+import { PostList } from "../../components/PostList";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import style from "./style.module.scss";
@@ -12,7 +12,7 @@ export const AllPostsPage = () => {
             <h1 className="title-2">Todas as notícias</h1>
           </div>
           <div>
-            <FeedList />
+            <PostList />
           </div>
         </main>
         <Footer />

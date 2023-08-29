@@ -1,7 +1,7 @@
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import banner from "../../assets/Banner.jpeg";
-import { FeedList } from "../../components/FeedList";
+import { PostList } from "../../components/PostList";
 import styles from "../HomePage/style.module.scss";
 
 export const HomePage = () => {
@@ -26,7 +26,7 @@ export const HomePage = () => {
           </section>
           <section className={styles.feedNewsPosts}>
             <h2>Últimas notícias</h2>
-            <FeedList />
+            <PostList />
           </section>
         </div>
       </main>

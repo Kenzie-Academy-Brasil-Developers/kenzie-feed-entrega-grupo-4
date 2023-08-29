@@ -1,18 +1,16 @@
-import { RiDeleteBin6Line } from "react-icons/ri";
-import { MdEdit } from "react-icons/md";
 import styles from "./style.module.scss";
 import { useContext } from "react";
 import { PostsContext } from "../../../providers/PostsContext";
 
-export const FeedCard = () => {
+export const PostCard = () => {
   const { postList } = useContext(PostsContext);
-  const posts = postList?.data || [];
+  const posts = postList || [];
 
   return (
     <>
       {!posts.length && (
         <div className={styles.noPost}>
-          <p >Ainda não possui nenhuma publicação</p>
+          <p>Ainda não possui nenhuma publicação</p>
         </div>
       )}
       {posts?.map((post) => {
