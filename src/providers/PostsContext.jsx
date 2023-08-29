@@ -16,7 +16,8 @@ export const PostsProvider = ({ children }) => {
   const { data: postList } = useQuery({
     queryKey: ["post"],
     queryFn: async () => {
-      return await apiFeed.get("posts?_embed=likes");
+      const { data } = await apiFeed.get("posts?_embed=likes");
+      return data
     },
   });
 
