@@ -12,18 +12,8 @@ export const DashboardPage = () => {
     useContext(PostsContext);
   return (
     <>
+
       {isOpenModalNewPost ? <ModalNewPost>teste</ModalNewPost> : null}
-      <Footer />
-      <header>
-        <img src={logo} alt="logo-kz" />
-        <div>
-          <span>UserImg</span>
-          <button>Dashboard</button>
-          <button>
-            <MdLogout title="Logout" aria-label="sair" />
-          </button>
-        </div>
-      </header>
       <main>
         <div>
           <h1>Suas publicações</h1>
@@ -40,6 +30,7 @@ export const DashboardPage = () => {
           <FeedList />
         </div>
       </main>
+      <Footer />
     </>
   );
 };

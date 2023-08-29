@@ -1,12 +1,7 @@
-import { useForm } from "react-hook-form";
-import loginImage from "./LoginImage.png";
-
+import loginImage from "../../assets/LoginImage.png";
+import { LoginForm } from "../../components/Forms/LoginForm";
 
 export const LoginPage = () => {
-  const { register, handleSubmit } = useForm({}); 
-
-  const submit = (formData) => {
-  };
   return (
     <main>
       <section>
@@ -14,17 +9,7 @@ export const LoginPage = () => {
         <div>
           <h1>Acesse o KenzieFeed</h1>
           <span>preencha os campos corretamente para fazer login</span>
-          <form onSubmit={handleSubmit(submit)}>
-            <input type="text" placeholder="E-mail" {...register("email")} />
-            <input
-              type="password"
-              placeholder="senha"
-              {...register("password")}
-            />
-            <button type="submit">Entrar</button>
-            <span> Não é cadastrado?</span>
-            <button type="button">Cadastre-se</button>
-          </form>
+          <LoginForm />
         </div>
       </section>
     </main>
