@@ -5,10 +5,11 @@ import { toast } from "react-toastify";
 export const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
+  const dataUserLogin = { email:"grupo4@email.com", password:"123456"};
 
   const userLogin = async (dataLogin) => {
     try {
-      const response = await apiFeed.post("/login", dataLogin);
+      const response = await apiFeed.post("/login", dataUserLogin);
       const userData = {
         userId: response.data.user.id,
         name: response.data.user.name,
@@ -16,10 +17,12 @@ export const UserProvider = ({ children }) => {
       };
       localStorage.setItem("@UserData", JSON.stringify(userData));
     } catch (error) {
+      console.log(error);
       toast.error("E-mail ou senha incorretos");
     }
   };
-  
+
+
   const userRegister = async (formData, reset, setLoading) => {
     try {
       setLoading(true);
@@ -42,7 +45,7 @@ export const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ userRegister }}>
+    <UserContext.Provider value={{ userRegister,userLogin }}>
       {children}
     </UserContext.Provider>
   );
