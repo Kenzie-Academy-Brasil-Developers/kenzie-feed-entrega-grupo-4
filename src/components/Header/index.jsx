@@ -3,13 +3,13 @@ import styles from "./style.module.scss";
 
 export const Header = () => {
   return (
-    <header>
-      <div className=".container">
+    <div className="container">
+      <header>
         <div className={styles.headerBox}>
           <img src={Logo} alt="LogoKenzieFeed" />
-          <button className=".btn-solid-s">Acessar</button>
+          <button className="btn-solid-s">Acessar</button>
         </div>
-      </div>
-    </header>
+      </header>
+    </div>
   );
 };
