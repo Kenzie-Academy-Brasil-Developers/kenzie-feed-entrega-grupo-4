@@ -6,7 +6,7 @@ import { PostsContext } from "../../../providers/PostsContext";
 
 export const FeedCard = () => {
   const { postList } = useContext(PostsContext);
-  const posts = postList.data;
+  const posts = postList?.data || [];
 
   return (
     <>
