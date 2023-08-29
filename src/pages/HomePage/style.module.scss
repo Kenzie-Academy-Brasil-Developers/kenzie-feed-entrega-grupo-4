@@ -36,10 +36,9 @@
   max-height: 384px;
   border-radius: 45px;
 
-  @media(max-width: 605px) {
+  @media (max-width: 605px) {
     height: 236px;
   }
-
 
   .banner {
     display: flex;
