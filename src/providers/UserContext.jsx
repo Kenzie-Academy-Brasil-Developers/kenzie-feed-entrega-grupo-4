@@ -5,29 +5,29 @@ import { toast } from "react-toastify";
 export const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
-  const dataUserLogin = { email:"grupo4@email.com", password:"123456"};
-
   const userLogin = async (dataLogin) => {
     try {
-      const response = await apiFeed.post("/login", dataUserLogin);
+      const response = await apiFeed.post("/login", dataLogin);
       const userData = {
         userId: response.data.user.id,
         name: response.data.user.name,
         token: response.data.accessToken,
       };
       localStorage.setItem("@UserData", JSON.stringify(userData));
+      console.log("Logado com sucesso!");
     } catch (error) {
       console.log(error);
       toast.error("E-mail ou senha incorretos");
     }
   };
 
-
   const userRegister = async (formData, reset, setLoading) => {
     try {
-      setLoading(true);
-      await apiFeed.post("/users", formData);
+      // setLoading(true);
+      const { data } = await apiFeed.post("/users", formData);
       toast.success("Usuário criado com sucesso");
+      console.log("usuário cadastrado com sucesso");
+      console.log(data);
       reset();
       // navigate("/");
     } catch (error) {
@@ -35,7 +35,7 @@ export const UserProvider = ({ children }) => {
         toast.error("Usuário já cadastrado");
       }
     } finally {
-      setLoading(false);
+      // setLoading(false);
     }
   };
 
@@ -45,7 +45,7 @@ export const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ userRegister,userLogin }}>
+    <UserContext.Provider value={{ userRegister, userLogin }}>
       {children}
     </UserContext.Provider>
   );
