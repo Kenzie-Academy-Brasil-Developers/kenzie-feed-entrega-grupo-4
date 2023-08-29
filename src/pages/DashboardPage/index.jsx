@@ -1,18 +1,24 @@
 import logo from "../../assets/logo.svg";
 import { MdLogout } from "react-icons/md";
 import { IoMdAddCircleOutline } from "react-icons/io";
-import { PostList } from "../../components/PostList";
+// import { FeedList } from "../../components/FeedList";
 import { Footer } from "../../components/Footer";
 import { PostsContext } from "../../providers/PostsContext";
 import { ModalNewPost } from "../../components/Modal/ModalNewPost";
 import { useContext } from "react";
+import { FormNewPost } from "../../components/Forms/NewpostForm";
 
 export const DashboardPage = () => {
   const { isOpenModalNewPost, setIsOpenModalNewPost } =
     useContext(PostsContext);
+
   return (
     <>
-      {isOpenModalNewPost ? <ModalNewPost>teste</ModalNewPost> : null}
+      {isOpenModalNewPost ? (
+        <ModalNewPost>
+          <FormNewPost />
+        </ModalNewPost>
+      ) : null}
       <main>
         <div>
           <h1>Suas publicações</h1>
@@ -25,9 +31,7 @@ export const DashboardPage = () => {
             Novo post
           </button>
         </div>
-        <div>
-          <PostList />
-        </div>
+        <div>{/* <FeedList /> */}</div>
       </main>
       <Footer />
     </>
