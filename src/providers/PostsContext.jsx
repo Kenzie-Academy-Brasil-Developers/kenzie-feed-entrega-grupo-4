@@ -7,6 +7,11 @@ export const PostsContext = createContext({});
 
 export const PostsProvider = ({ children }) => {
   const [isOpenModalNewPost, setIsOpenModalNewPost] = useState(false);
+  const [dataPost, setDataPost] = useState({
+    title: String,
+    image: String,
+    description: String,
+  });
   const client = useQueryClient();
 
   const revalidate = () => {
@@ -17,7 +22,7 @@ export const PostsProvider = ({ children }) => {
     queryKey: ["post"],
     queryFn: async () => {
       const { data } = await apiFeed.get("posts?_embed=likes");
-      return data
+      return data;
     },
   });
 
@@ -85,6 +90,8 @@ export const PostsProvider = ({ children }) => {
         deletePost,
         isOpenModalNewPost,
         setIsOpenModalNewPost,
+        dataPost,
+        setDataPost,
       }}
     >
       {children}
