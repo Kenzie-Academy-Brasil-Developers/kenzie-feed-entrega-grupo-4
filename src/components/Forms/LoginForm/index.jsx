@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { loginFormSchema } from "./loginFormSchema";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { InputPassword } from "../InputPassword";
 
 export const LoginForm = () => {
   const {
@@ -18,7 +19,7 @@ export const LoginForm = () => {
   const [loading, setLoading] = useState(false);
 
   const submit = (formData) => {
-    // console.log(formData);
+    console.log(formData);
   };
 
   return (
@@ -30,8 +31,7 @@ export const LoginForm = () => {
         error={errors.email}
         disabled={loading}
       />
-      <Input
-        type={"password"}
+      <InputPassword
         placeholder={"Senha"}
         {...register("password")}
         error={errors.password}
