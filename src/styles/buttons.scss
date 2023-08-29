@@ -38,12 +38,18 @@
   font-family: var(--font-body);
   font-size: 14px;
   font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   line-height: 16.94px;
   border-radius: 4px;
-  width: 133px;
-  height: 43px;
+  width: 114px;
+  height: 46px;
   color: var(--color-blue);
-  background: var(--color-white);
+  background: transparent;
+  border: 1px solid var(--color-blue);
+  cursor: pointer;
 }
 
 .btn-outline-register {
