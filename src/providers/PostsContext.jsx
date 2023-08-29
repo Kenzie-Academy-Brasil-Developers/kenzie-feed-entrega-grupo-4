@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import { apiFeed } from "../services/api";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { toast } from "react-toastify";
@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 export const PostsContext = createContext({});
 
 export const PostsProvider = ({ children }) => {
+  const [isOpenModalNewPost, setIsOpenModalNewPost] = useState(false);
   const client = useQueryClient();
 
   const revalidate = () => {
@@ -18,6 +19,7 @@ export const PostsProvider = ({ children }) => {
       return await apiFeed.get("posts?_embed=likes");
     },
   });
+
   const editPost = useMutation({
     mutationFn: async (formData, postId) => {
       const { token, userId, name } = JSON.parse(
@@ -75,7 +77,14 @@ export const PostsProvider = ({ children }) => {
 
   return (
     <PostsContext.Provider
-      value={{ createPost, editPost, postList, deletePost }}
+      value={{
+        createPost,
+        editPost,
+        postList,
+        deletePost,
+        isOpenModalNewPost,
+        setIsOpenModalNewPost,
+      }}
     >
       {children}
     </PostsContext.Provider>

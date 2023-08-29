@@ -1,12 +1,19 @@
-import logo  from "../../assets/logo.svg"
+import logo from "../../assets/logo.svg";
 import { MdLogout } from "react-icons/md";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { FeedList } from "../../components/FeedList";
 import { Footer } from "../../components/Footer";
+import { PostsContext } from "../../providers/PostsContext";
+import { ModalNewPost } from "../../components/Modal/ModalNewPost";
+import { useContext } from "react";
 
 export const DashboardPage = () => {
+  const { isOpenModalNewPost, setIsOpenModalNewPost } =
+    useContext(PostsContext);
   return (
     <>
+      {isOpenModalNewPost ? <ModalNewPost>teste</ModalNewPost> : null}
+      <Footer />
       <header>
         <img src={logo} alt="logo-kz" />
         <div>
@@ -20,7 +27,7 @@ export const DashboardPage = () => {
       <main>
         <div>
           <h1>Suas publicações</h1>
-          <button>
+          <button onClick={() => setIsOpenModalNewPost(true)}>
             <IoMdAddCircleOutline
               title="NewPost"
               aria-label="adicionar post"
@@ -33,7 +40,6 @@ export const DashboardPage = () => {
           <FeedList />
         </div>
       </main>
-      <Footer />
     </>
   );
 };
