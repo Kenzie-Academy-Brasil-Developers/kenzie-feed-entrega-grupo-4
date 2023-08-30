@@ -83,7 +83,29 @@ export const PostsProvider = ({ children }) => {
     },
   });
 
-  // const
+  const addLikePost = (postId) => {
+    const { token, userId } = JSON.parse(localStorage.getItem("@UserData"));
+
+    const dataLike = {
+      userId: userId,
+      postId: postId,
+    };
+
+    return apiFeed.delete(`/likes`, dataLike, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
+
+  const deleteLikePost = (postId) => {
+    const { token } = JSON.parse(localStorage.getItem("@UserData"));
+    return apiFeed.delete(`/likes/${postId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
 
   return (
     <PostsContext.Provider
@@ -97,6 +119,8 @@ export const PostsProvider = ({ children }) => {
         dataPost,
         setDataPost,
         isLoading,
+        addLikePost,
+        deleteLikePost,
       }}
     >
       {children}
