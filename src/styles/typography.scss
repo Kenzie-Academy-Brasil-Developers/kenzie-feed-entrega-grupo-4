@@ -1,76 +1,52 @@
-.title-1 {
-  font-family: var(--font-titles);
+.title {
+  font-family: var(--font-title);
   font-weight: 700;
-  line-height: 4.16rem;
-  font-size: 3.25rem;
-}
 
-.title-1-mobile {
-  font-family: var(--font-titles);
-  font-weight: 700;
-  line-height: 2.72rem;
-  font-size: 2.125rem;
-}
-
-.title-2 {
-  font-family: var(--font-titles);
-  font-weight: 700;
-  line-height: 3.52rem;
-  font-size: 2rem;
-}
-
-.title-2-mobile {
-  font-family: var(--font-titles);
-  font-weight: 700;
-  line-height: 2.4rem;
-  font-size: 1.875rem;
-}
-
-.title-3 {
-  font-family: var(--font-titles);
-  font-weight: 700;
-  line-height: 1.84rem;
-  font-size: 1.4375rem;
-}
-
-.title-post {
-  font-family: var(--font-titles);
-  font-weight: 700;
-  line-height: 2.88rem;
-  font-size: 2.25rem;
-}
-
-.title-post-mobile {
-  font-family: var(--font-titles);
-  font-weight: 700;
-  line-height: 2.24rem;
-  font-size: 1.75rem;
+  &.one {
+    font-size: clamp(2.125rem, 4vw, 3.25rem); // 34px. 52px
+  }
+  &.two {
+    font-size: clamp(1.875rem, 4vw, 2.75rem); // 30px. 44px
+  }
+  &.three {
+    font-size: 1.4375rem; //23px
+  }
+  &.post {
+    font-size: clamp(1.75rem, 4vw, 2.25rem); // 28px. 36px
+  } 
+  &.blue {
+    color: var(--color-blue);
+  } 
+  &.black {
+    color: var(--color-black);
+  }
+  &.white {
+    color: var(--color-white);
+  }
+  
 }
 
 .paragraph {
-  font-family: var(--font-body);
   font-weight: 400;
-  line-height: 2.25rem;
-  font-size: 1.125rem;
-}
+  line-height: 1.6;
+  font-size: clamp(1.0625rem, 4vw, 1.125rem); //17px, 18px
 
-.paragraph-mobile {
-  font-family: var(--font-body);
-  font-weight: 400;
-  line-height: 2.125rem;
-  font-size: 17px;
-}
+  &.small {
+    font-size: 0.875rem; //14px
+  }
 
-.paragraph-small {
-  font-family: var(--font-body);
-  font-weight: 400;
-  line-height: 1.0588rem;
-  font-size: 0.875rem;
-}
-.font-link {
-  font-family: var(--font-body);
-  color: var(--color-blue);
-  font-weight: 400;
-  line-height: 1.0588rem;
-  font-size: 0.9375rem;
+  &.link {
+    text-decoration: underline;
+    font-size: 0.9375rem; //15px
+  }
+
+  &.blue {
+    color: var(--color-blue);
+  } 
+  &.black {
+    color: var(--color-black);
+  }
+  &.white {
+    color: var(--color-white);
+  }
 }
