@@ -7,8 +7,13 @@ import { Footer } from "../../../components/Footer";
 import { useContext } from "react";
 import { PostsContext } from "../../../providers/PostsContext";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 export const EditPage = () => {
   const { dataPost } = useContext(PostsContext);
+  const { handleSubmit, register } = useForm();
+  const formData = (data) => {
+    console.log(data);
+  };
   return (
     <>
       <div className="container">
@@ -18,7 +23,10 @@ export const EditPage = () => {
             <div className={style.imgUser}>
               <p>A</p>
             </div>
-            <Link to={"/dashboard"} className="btn-outline">
+            <Link
+              to={"/dashboard"}
+              className={`${"btn-outline"} ${style.link}`}
+            >
               Dashboard
             </Link>
             <FiLogOut className={style.icon} />
@@ -26,26 +34,32 @@ export const EditPage = () => {
         </header>
         <div className={style.containerMain}>
           <main>
-            <div className={style.handleHeader}>
+            <div className={style.headerMain}>
               <h2 className="title-2">Editando:</h2>
-              <button className={"btn-outline"}>
+              <button className={style.buttonBack}>
                 <AiOutlineArrowLeft className={style.arrowIcon} />
-                <p className={style.buttonBack}>Voltar</p>
+                <p>Voltar</p>
               </button>
             </div>
-            <form>
+            <form className={style.form} onSubmit={handleSubmit(formData)}>
               <label>Titulo</label>
-              <Input type={"text"} value={"testando"} />
+              <Input type={"text"} value={"testando"} {...register("title")} />
               <label>Imagem em destaque</label>
-              <Input type={"text"} value={"testando testando testando"} />
+              <Input
+                type={"text"}
+                value={"testando testando testando"}
+                {...register("image")}
+              />
               <label>Conteúdo</label>
-              <textarea>
+              <textarea {...register("description")}>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                 Sapiente maiores amet magnam dignissimos quos quisquam,
                 obcaecati eos et repellat aspernatur mollitia id unde incidunt
                 laborum laboriosam ipsum praesentium iusto earum!
               </textarea>
-              <button className="btn-solid-s">Salvar Post</button>
+              <button type="submit" className="btn-medium">
+                Salvar Post
+              </button>
             </form>
           </main>
         </div>
