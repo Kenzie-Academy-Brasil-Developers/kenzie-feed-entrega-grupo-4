@@ -3,8 +3,10 @@ import { Header } from "../../components/Header";
 import banner from "../../assets/Banner.jpeg";
 import { PostList } from "../../components/PostList";
 import styles from "../HomePage/style.module.scss";
+import { useNavigate } from "react-router-dom";
 
 export const HomePage = () => {
+  const navigate = useNavigate()
   return (
     <>
       <Header />
@@ -12,9 +14,9 @@ export const HomePage = () => {
         <div className="container">
           <section>
             <div className={styles.welcomeFeedText}>
-              <span>KENZIE FEED</span>
-              <h1>Seja muito bem vindo ao KenzieFeed</h1>
-              <p>Fique por dentro das últimas notícias</p>
+              <span className="paragraph small bold">KENZIE FEED</span>
+              <h1 className="title one">Seja muito bem vindo ao KenzieFeed</h1>
+              <p className="paragraph">Fique por dentro das últimas notícias</p>
             </div>
             <div className={styles.containerBanner}>
               <img
@@ -25,7 +27,10 @@ export const HomePage = () => {
             </div>
           </section>
           <section className={styles.feedNewsPosts}>
-            <h2>Últimas notícias</h2>
+            <div className={styles.viewAll}>
+            <h2 className="title two">Últimas notícias</h2>
+            <button className="btn-small" onClick={() => navigate("/allPosts")}>Ver tudo</button>
+            </div>
             <PostList />
           </section>
         </div>

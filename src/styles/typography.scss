@@ -35,6 +35,10 @@
     font-size: 0.875rem; //14px
   }
 
+  &.bold {
+    font-weight: 700;
+  }
+
   &.link {
     text-decoration: underline;
     font-size: 0.9375rem; //15px
