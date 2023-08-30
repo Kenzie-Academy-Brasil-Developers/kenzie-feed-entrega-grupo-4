@@ -5,17 +5,18 @@
 }
 .img {
   max-width: 587px;
+  border-radius: 25px;
   width: 100%;
 }
 
 .noPost {
   display: flex;
   justify-content: center;
-  
+
   p {
     font-family: var(--font-titles);
-  font-weight: 700;
-  line-height: 56.32px;
-  font-size: clamp(20px, 4vw, 32px);
+    font-weight: 700;
+    line-height: 56.32px;
+    font-size: clamp(20px, 4vw, 32px);
   }
 }
