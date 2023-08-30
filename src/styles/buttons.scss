@@ -11,6 +11,20 @@
   border: none;
 }
 
+.btn-solid-s-mobile {
+  width: 100px;
+  height: 35px;
+
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16.94px;
+
+  color: var(--color-white);
+  background: var(--color-blue);
+  border-radius: 4px;
+}
+
 .btn-solid-m {
   font-family: var(--font-body);
   font-size: 14px;
@@ -50,6 +64,25 @@
   background: transparent;
   border: 1px solid var(--color-blue);
   cursor: pointer;
+}
+
+
+.btn-outline-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 90px;
+  height: 35px;
+
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16.94px;
+
+  border: 1px solid var(--color-blue);
+  border-radius: 4px;
+  color: var(--color-blue);
 }
 
 .btn-outline-register {
