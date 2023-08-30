@@ -11,13 +11,13 @@ import { ViewPost } from "../pages/ViewPost";
 export const RoutesMain = () => {
   return (
     <Routes>
-      <Route path="/" element={<LoginPage />} />
+      <Route path="/" element={<HomePage />} />
+      <Route path="/loginPage" element={<LoginPage />} />
       <Route path="/editPage" element={<EditPage />} />
       <Route path="/register" element={<RegisterPage />} />
-      <Route path="/home" element={<HomePage />} />
       <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/allPosts" element={<AllPostsPage />} />
-      <Route path="/viewpost" element={<ViewPost />} />
+      <Route path="/viewPost" element={<ViewPost />} />
       <Route path="*" element={<ErrorPage />} />
     </Routes>
   );
