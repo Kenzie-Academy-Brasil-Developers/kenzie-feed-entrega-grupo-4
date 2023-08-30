@@ -15,6 +15,7 @@ export const ViewPost = () => {
   };
 
   const [like, setLike] = useState(false);
+  const [countLike, setCountLike] = useState(0);
 
   return (
     <DefaultTemplate>
@@ -22,30 +23,33 @@ export const ViewPost = () => {
         <section className={styles.contents}>
           <div className={styles.viewPost}>
             <div className={styles.postTitle}>
-              <span className="paragraph-small">Por:{data.owner}</span>
-              <h1 className="title-post">{data.title}</h1>
+              <span className="paragraph">Por:{data.owner}</span>
+              <h1 className="title two textCenter">{data.title}</h1>
             </div>
             <img className={styles.bannerPost} src={data.image} alt="" />
             <div className={styles.like}>
               {like ? (
-                <AiOutlineHeart type="button" onClick={() => setLike(!like)} />
+                <AiOutlineHeart size={20} type="button" onClick={() => setLike(!like)} />
               ) : (
-                <AiFillHeart type="button" onClick={() => setLike(!like)} />
+                <AiFillHeart size={20} type="button" onClick={() => setLike(!like)} />
               )}
               {like ? (
-                <span className="paragraph-small" onClick={() => setLike(!like)}>
+                <span className="paragraph small" onClick={() => setLike(!like)}>
                   Seja o primeiro a curtir este post{" "}
                 </span>
               ) : (
-                <span className="paragraph-small" onClick={() => setLike(!like)}>curtida</span>
+                <span className="paragraph small" onClick={() => setLike(!like)}>{countLike} Curtida</span>
               )}
             </div>
-            <p className={styles.description}>{data.description}</p>
+            <p className="paragraph">{data.description}</p>
           </div>
         </section>
 
-        <section className={styles.more}>
-          <h2 className={styles.readMore} >Leia também</h2>
+        <section>
+          <div className={styles.more}>
+          <h2 className="title one" >Leia também</h2>
+          </div>
+
           <PostList />
         </section>
       </main>
