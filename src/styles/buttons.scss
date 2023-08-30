@@ -47,7 +47,9 @@
   }
 }
 
-.btn-small:hover, .btn-medium:hover, .btn-large:hover {
+.btn-small:hover,
+.btn-medium:hover,
+.btn-large:hover {
   background-color: var(--color-white);
   color: var(--color-blue);
 }
