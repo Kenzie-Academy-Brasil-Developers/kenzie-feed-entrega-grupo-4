@@ -8,7 +8,7 @@ import styles from "./style.module.scss";
 export const RegisterPage = () => {
   return (
     <DefaultTemplate>
-      <main>
+      <main className={styles.main}>
         <div className={styles.containerBox}>
           <Link to={"/loginPage"} className="btn-outline icon">
             <MdArrowBack size={24} />
