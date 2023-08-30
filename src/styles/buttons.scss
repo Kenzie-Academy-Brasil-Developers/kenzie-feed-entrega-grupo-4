@@ -41,13 +41,22 @@
   font-weight: 700;
   background-color: var(--color-white);
 
+  &.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+
   &:hover {
     background-color: var(--color-blue);
     color: var(--color-white);
   }
 }
 
-.btn-small:hover, .btn-medium:hover, .btn-large:hover {
+.btn-small:hover,
+.btn-medium:hover,
+.btn-large:hover {
   background-color: var(--color-white);
   color: var(--color-blue);
 }

@@ -5,6 +5,7 @@ import { registerFormSchema } from "./registerFormSchema";
 import { InputPassword } from "../InputPassword";
 import { useContext, useState } from "react";
 import { UserContext } from "../../../providers/UserContext";
+import styles from "./style.module.scss";
 
 export const RegisterForm = () => {
   const { userRegister } = useContext(UserContext);
@@ -25,8 +26,8 @@ export const RegisterForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(submit)}>
-      <div>
+    <form className={styles.form} onSubmit={handleSubmit(submit)}>
+      <div className={styles.inputContainer}>
         <Input
           type={"text"}
           placeholder={"Nome"}
@@ -42,7 +43,7 @@ export const RegisterForm = () => {
           disabled={loading}
         />
       </div>
-      <div>
+      <div className={styles.inputContainer}>
         <InputPassword
           placeholder={"Senha"}
           {...register("password")}
@@ -56,7 +57,7 @@ export const RegisterForm = () => {
           disabled={loading}
         />
       </div>
-      <button type="submit">
+      <button type="submit" className="btn-medium">
         {!loading ? "Cadastre-se" : "Cadastrando..."}
       </button>
     </form>
