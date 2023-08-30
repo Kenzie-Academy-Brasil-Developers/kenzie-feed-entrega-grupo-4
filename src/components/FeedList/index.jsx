@@ -7,8 +7,8 @@ export const FeedList = () => {
 
   return (
     <ul>
-      {postList.map(post => (
-        <FeedCard key={post.id} post={post}/>
+      {postList?.map((post) => (
+        <FeedCard key={post.id} post={post} />
       ))}
     </ul>
   );
