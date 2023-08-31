@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { FeedCard } from "../FeedCard";
 import { PostsContext } from "../../providers/PostsContext";
-import styles from "./style.module.scss";
 
 
 export const FeedList = () => {
@@ -10,7 +9,7 @@ export const FeedList = () => {
   console.log(postList);
 
   return (
-    <ul className={styles.container}>
+    <ul>
       {postList?.map((post) => (
         <FeedCard key={post.id} post={post} />
       ))}
