@@ -1,10 +1,12 @@
 import { createContext } from "react";
 import { apiFeed } from "../services/api";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
+  const navigate = useNavigate();
   const userLogin = async (dataLogin) => {
     try {
       const response = await apiFeed.post("login", dataLogin);
@@ -14,9 +16,9 @@ export const UserProvider = ({ children }) => {
         token: response.data.accessToken,
       };
       localStorage.setItem("@UserData", JSON.stringify(userData));
-      console.log("Logado com sucesso!");
+      // navigate("dashboard");
+      toast.success("Logado com sucesso!");
     } catch (error) {
-      console.log(error);
       toast.error("E-mail ou senha incorretos");
     }
   };
