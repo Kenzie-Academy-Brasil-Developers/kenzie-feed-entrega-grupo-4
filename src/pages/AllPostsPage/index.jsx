@@ -3,8 +3,7 @@ import { Header } from "../../components/Header";
 import style from "./style.module.scss";
 import { useContext } from "react";
 import { PostsContext } from "../../providers/PostsContext";
-import { PostCard } from "../../components/PostList/PostCard";
-// import { produce } from "immer";
+import { produce } from "immer";
 import { PostList } from "../../components/PostList";
 
 export const AllPostsPage = () => {
