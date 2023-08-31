@@ -9,6 +9,7 @@ import { PostsContext } from "../../../providers/PostsContext";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 export const EditPage = () => {
+  const { name } = JSON.parse(localStorage.getItem("@UserData"));
   const { dataPost, editPost } = useContext(PostsContext);
 
   const { handleSubmit, register } = useForm();
@@ -31,7 +32,7 @@ export const EditPage = () => {
           <img src={logo} alt="Logo Kenzie" />
           <div>
             <div className={style.imgUser}>
-              <p>A</p>
+              <p className="paragraph">{name.substr(0, 1)}</p>
             </div>
             <Link
               to={"/dashboard"}

@@ -12,12 +12,13 @@ import styles from "./style.module.scss";
 export const DashboardPage = () => {
   const { isOpenModalNewPost, setIsOpenModalNewPost } =
     useContext(PostsContext);
+  const { name } = JSON.parse(localStorage.getItem("@UserData"));
   return (
     <>
       <header className={`${styles.header__container} container`}>
         <img src={logo} alt="logo-kz" />
         <div className={styles.buttons__container}>
-          <span>A</span>
+          <p className="paragraph">{name.substr(0, 1)}</p>
           <button className="btn-outline">Dashboard</button>
           <button>
             <MdLogout title="Logout" aria-label="sair" size={20} />
