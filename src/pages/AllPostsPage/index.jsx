@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { PostsContext } from "../../providers/PostsContext";
 import { PostCard } from "../../components/PostList/PostCard";
 import { produce } from "immer";
+import { PostList } from "../../components/PostList";
 
 export const AllPostsPage = () => {
   const { postList } = useContext(PostsContext);
@@ -26,11 +27,7 @@ export const AllPostsPage = () => {
             <h1 className="title-2">Todas as notícias</h1>
           </div>
           <div>
-            <ul>
-              {postListReversed?.map((post) => (
-                <PostCard key={post.id} post={post} />
-              ))}
-            </ul>
+            <PostList postList={postListReversed} />
           </div>
         </main>
         <Footer />

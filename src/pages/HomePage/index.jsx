@@ -7,6 +7,7 @@ import { produce } from "immer";
 import { useContext } from "react";
 import { PostsContext } from "../../providers/PostsContext";
 import { PostCard } from "../../components/PostList/PostCard";
+import { PostList } from "../../components/PostList";
 
 export const HomePage = () => {
   const navigate = useNavigate();
@@ -47,11 +48,7 @@ export const HomePage = () => {
                 Ver tudo
               </button>
             </div>
-            <ul>
-              {postListReversed?.map((post) => (
-                <PostCard key={post.id} post={post} />
-              ))}
-            </ul>
+            <PostList postList={postListReversed} />
           </section>
         </div>
       </main>
