@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import styles from "./style.module.scss";
+import { PostsContext } from "../../../providers/PostsContext";
 
 export const PostCard = ({ post }) => {
   const { getPostById } = useContext(PostsContext);
