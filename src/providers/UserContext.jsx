@@ -7,7 +7,7 @@ export const UserContext = createContext({});
 export const UserProvider = ({ children }) => {
   const userLogin = async (dataLogin) => {
     try {
-      const response = await apiFeed.post("/login", dataLogin);
+      const response = await apiFeed.post("login", dataLogin);
       const userData = {
         userId: response.data.user.id,
         name: response.data.user.name,
@@ -24,7 +24,7 @@ export const UserProvider = ({ children }) => {
   const userRegister = async (formData, reset, setLoading) => {
     try {
       // setLoading(true);
-      const { data } = await apiFeed.post("/users", formData);
+      const { data } = await apiFeed.post("users", formData);
       toast.success("Usuário criado com sucesso");
       console.log("usuário cadastrado com sucesso");
       console.log(data);
