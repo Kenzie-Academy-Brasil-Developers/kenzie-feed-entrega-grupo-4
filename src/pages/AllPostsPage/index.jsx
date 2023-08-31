@@ -9,7 +9,9 @@ import { produce } from "immer";
 export const AllPostsPage = () => {
   const { postList } = useContext(PostsContext);
 
-  const postListReversed = produce(postList, (draftPostList) => {
+  const postListTrue = postList || [];
+
+  const postListReversed = produce(postListTrue, (draftPostList) => {
     draftPostList.reverse();
   });
 

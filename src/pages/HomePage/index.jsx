@@ -1,12 +1,23 @@
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import banner from "../../assets/Banner.jpeg";
-import { PostList } from "../../components/PostList";
 import styles from "../HomePage/style.module.scss";
 import { useNavigate } from "react-router-dom";
+import { produce } from "immer";
+import { useContext } from "react";
+import { PostsContext } from "../../providers/PostsContext";
+import { PostCard } from "../../components/PostList/PostCard";
 
 export const HomePage = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
+  const { postList } = useContext(PostsContext);
+
+  const postListTrue = postList || [];
+
+  const postListReversed = produce(postListTrue, (draftPostList) => {
+    draftPostList.reverse();
+  });
   return (
     <>
       <Header />
@@ -28,10 +39,19 @@ export const HomePage = () => {
           </section>
           <section className={styles.feedNewsPosts}>
             <div className={styles.viewAll}>
-            <h2 className="title two">Últimas notícias</h2>
-            <button className="btn-small" onClick={() => navigate("/allPosts")}>Ver tudo</button>
+              <h2 className="title two">Últimas notícias</h2>
+              <button
+                className="btn-small"
+                onClick={() => navigate("/allPosts")}
+              >
+                Ver tudo
+              </button>
             </div>
-            <PostList />
+            <ul>
+              {postListReversed?.map((post) => (
+                <PostCard key={post.id} post={post} />
+              ))}
+            </ul>
           </section>
         </div>
       </main>
