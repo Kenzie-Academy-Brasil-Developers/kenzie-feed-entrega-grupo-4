@@ -1,22 +1,29 @@
 .contentPost {
   display: flex;
   flex-direction: column;
+  max-width: 587px;
   gap: 1rem;
 }
-.img {
-  max-width: 587px;
-  border-radius: 25px;
+
+.containerBanner {
+  display: flex;
+  justify-content: center;
   width: 100%;
+  max-width: 587px;
+  height: 254px;
+  border-radius: 45px;
+
+  .banner {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 45px;
+  }
 }
 
 .noPost {
   display: flex;
   justify-content: center;
-
-  p {
-    font-family: var(--font-titles);
-    font-weight: 700;
-    line-height: 56.32px;
-    font-size: clamp(20px, 4vw, 32px);
-  }
 }

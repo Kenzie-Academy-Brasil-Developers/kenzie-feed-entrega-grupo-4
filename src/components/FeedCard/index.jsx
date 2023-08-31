@@ -20,7 +20,7 @@ export const FeedCard = ({ post }) => {
         </div>
         <div className={styles.cardPost}>
           <img src={post.image} alt={post.title} />
-          <h4>{post.title}</h4>
+          <h4 className="titile one ">{post.title}</h4>
         </div>
       </div>
     </li>
