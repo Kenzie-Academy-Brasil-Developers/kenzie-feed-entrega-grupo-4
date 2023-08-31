@@ -12,7 +12,6 @@ import styles from "./style.module.scss";
 export const DashboardPage = () => {
   const { isOpenModalNewPost, setIsOpenModalNewPost } =
     useContext(PostsContext);
-
   return (
     <>
       <header className={`${styles.header__container} container`}>

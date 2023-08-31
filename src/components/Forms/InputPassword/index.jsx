@@ -9,7 +9,11 @@ export const InputPassword = forwardRef(({ error, ...rest }, ref) => {
     <div className={styles.inputBox}>
       <div className={styles.input}>
         <input type={isHidden ? "password" : "text"} ref={ref} {...rest} />
-        <button type="button" onClick={() => setIsHidden(!isHidden)}>
+        <button
+          className={styles.buttonEye}
+          type="button"
+          onClick={() => setIsHidden(!isHidden)}
+        >
           {isHidden ? (
             <FaEye size={20} color="#00000080" />
           ) : (

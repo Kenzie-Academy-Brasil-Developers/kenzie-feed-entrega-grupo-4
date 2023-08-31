@@ -9,10 +9,20 @@ import { PostsContext } from "../../../providers/PostsContext";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 export const EditPage = () => {
-  const { dataPost } = useContext(PostsContext);
+  const { dataPost, editPost } = useContext(PostsContext);
+
   const { handleSubmit, register } = useForm();
+
   const formData = (data) => {
-    console.log(data);
+    const newPost = {
+      id: dataPost.id,
+      userId: dataPost.userId,
+      owner: dataPost.owner,
+      title: data.title,
+      description: data.description,
+      image: data.image,
+    };
+    editPost.mutate(newPost);
   };
   return (
     <>
@@ -36,27 +46,29 @@ export const EditPage = () => {
           <main>
             <div className={style.headerMain}>
               <h2 className="title-2">Editando:</h2>
-              <button className={style.buttonBack}>
+              <Link to={"/dashboard"} className={style.buttonBack}>
                 <AiOutlineArrowLeft className={style.arrowIcon} />
                 <p>Voltar</p>
-              </button>
+              </Link>
             </div>
             <form className={style.form} onSubmit={handleSubmit(formData)}>
               <label>Titulo</label>
-              <Input type={"text"} value={"testando"} {...register("title")} />
+              <Input
+                type={"text"}
+                defaultValue={dataPost.title}
+                {...register("title")}
+              />
               <label>Imagem em destaque</label>
               <Input
                 type={"text"}
-                value={"testando testando testando"}
+                defaultValue={dataPost.image}
                 {...register("image")}
               />
               <label>Conteúdo</label>
-              <textarea {...register("description")}>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Sapiente maiores amet magnam dignissimos quos quisquam,
-                obcaecati eos et repellat aspernatur mollitia id unde incidunt
-                laborum laboriosam ipsum praesentium iusto earum!
-              </textarea>
+              <textarea
+                {...register("description")}
+                defaultValue={dataPost.description}
+              ></textarea>
               <button type="submit" className="btn-medium">
                 Salvar Post
               </button>
