@@ -26,8 +26,6 @@ export const PostsProvider = ({ children }) => {
     },
   });
 
-  console.log(postList);
-
   const editPost = useMutation({
     mutationFn: async (formData, postId) => {
       const { token, userId, name } = JSON.parse(
