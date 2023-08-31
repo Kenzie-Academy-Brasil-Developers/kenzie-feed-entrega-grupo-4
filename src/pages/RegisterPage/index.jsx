@@ -16,8 +16,12 @@ export const RegisterPage = () => {
               <span>Voltar</span>
             </Link>
             <section>
-              <h1 className="title two black textCenter">Cadastre um usuário</h1>
-              <span className="paragraph textCenter">Preencha os campos corretamente para fazer login</span>
+              <h1 className="title two black textCenter">
+                Cadastre um usuário
+              </h1>
+              <span className="paragraph textCenter">
+                Preencha os campos corretamente para fazer login
+              </span>
               <div>
                 <RegisterForm />
               </div>
