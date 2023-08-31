@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { FeedCard } from "../FeedCard";
 import { PostsContext } from "../../providers/PostsContext";
-import styles from "./style.module.scss";
 
 
 export const FeedList = () => {
@@ -9,10 +8,10 @@ export const FeedList = () => {
   const { userId } = JSON.parse(localStorage.getItem("@UserData"));
   const newPostList = postList?.filter((post) => post.userId === userId);
   return (
-    <ul className={styles.container}>
+    
+    <ul>
       {newPostList?.map((post) => (
         <FeedCard key={post.id} post={post} />
-        </ul>
       ))}
     </ul>
   );

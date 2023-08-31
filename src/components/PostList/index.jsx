@@ -1,7 +1,5 @@
-import { useContext } from "react";
 import { PostCard } from "./PostCard";
 import style from "./style.module.scss";
-import { PostsContext } from "../../providers/PostsContext";
 
 export const PostList = ({ postList }) => {
   return (
