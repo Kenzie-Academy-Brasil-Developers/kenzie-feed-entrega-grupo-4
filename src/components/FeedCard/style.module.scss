@@ -1,0 +1,64 @@
+.btnCard__container {
+  position: relative;
+  top: 8.75rem;
+
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 8px;
+  padding: 2px 5px;
+  border-radius: 0 0 14px 14px;
+
+  filter: opacity(0.5);
+
+  button {
+    color: var(--color-blue);
+  }
+}
+
+.btnCard__container:hover {
+    filter: none;
+}
+
+.cardPost {
+  h2 {
+    font-weight: 700;
+  }
+
+  img {
+    border-radius: 25px;
+  }
+}
+
+@media (min-width: 900px) {
+
+    .feedCard__container {
+        max-width: 810px;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+    }
+
+    .btnCard__container {
+        top: 5.6875rem;
+        justify-content: end;
+        align-items: center;
+        gap: 8px;
+        filter: none;
+    }
+
+    .cardPost {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+
+        align-items: center;
+    }
+
+    .cardPost img {
+        max-width: 145px;
+        height: 135px;
+    }
+}
+
+

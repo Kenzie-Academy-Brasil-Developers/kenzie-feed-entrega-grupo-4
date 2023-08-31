@@ -15,11 +15,11 @@ export const DashboardPage = () => {
 
   return (
     <>
-      <header className={styles.header__container}>
+      <header className={`${styles.header__container} container`}>
         <img src={logo} alt="logo-kz" />
         <div className={styles.buttons__container}>
-          <img src="#"></img>
-          <button className="btn-outline-mobile">Dashboard</button>
+          <span>A</span>
+          <button className="btn-outline">Dashboard</button>
           <button>
             <MdLogout title="Logout" aria-label="sair" size={20} />
           </button>
@@ -30,12 +30,12 @@ export const DashboardPage = () => {
           <FormNewPost />
         </ModalNewPost>
       ) : null}
-      <main>
+      <main className={`${styles.main__container} container`}>
         <div className={styles.feedHeader__container}>
-          <h2 className="title-3">Suas publicações</h2>
+          <h2 className="title three">Suas publicações</h2>
           <button
             onClick={() => setIsOpenModalNewPost(true)}
-            className="btn-solid-s-mobile"
+            className="btn-small"
           >
             <IoMdAddCircleOutline
               title="NewPost"
@@ -45,9 +45,9 @@ export const DashboardPage = () => {
             Novo post
           </button>
         </div>
-        <div>
+        <section>
           <FeedList />
-        </div>
+        </section>
       </main>
       <Footer />
     </>
