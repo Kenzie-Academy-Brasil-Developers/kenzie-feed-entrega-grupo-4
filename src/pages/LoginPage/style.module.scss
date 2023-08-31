@@ -1,0 +1,29 @@
+.sectionLogin__container {
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(30px, 126px, 50px)
+}
+
+figure img {
+    margin-bottom: 20px;
+    width: clamp(200px, 80vw, 400px);
+    object-fit: cover;
+    border-radius: 25px;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+@media (max-width: 500px) {
+    figure img {
+        height: 250px;
+    }
+}
