@@ -1,12 +1,25 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { apiFeed } from "../services/api";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export const PostsContext = createContext({});
 
 export const PostsProvider = ({ children }) => {
+  const navigate = useNavigate();
   const [isOpenModalNewPost, setIsOpenModalNewPost] = useState(false);
+
+  const revalidate = () => {
+    client.invalidateQueries({ queryKey: "post" });
+  };
+
+  const getPostById = async (postId) => {
+    const { data } = await apiFeed.get(`posts/${postId}?_embed=likes`);
+    localStorage.setItem("@PostId", data.id);
+    navigate("/viewPost");
+  };
+
   const [dataPost, setDataPost] = useState({
     id: Number,
     title: String,
@@ -14,11 +27,8 @@ export const PostsProvider = ({ children }) => {
     image: String,
     description: String,
   });
-  const client = useQueryClient();
 
-  const revalidate = () => {
-    client.invalidateQueries({ queryKey: "post" });
-  };
+  const client = useQueryClient();
 
   const { data: postList, isLoading } = useQuery({
     queryKey: ["post"],
@@ -139,6 +149,7 @@ export const PostsProvider = ({ children }) => {
         isLoading,
         addLikePost,
         deleteLikePost,
+        getPostById,
         postForId,
       }}
     >

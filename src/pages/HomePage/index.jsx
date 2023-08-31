@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { produce } from "immer";
 import { useContext } from "react";
 import { PostsContext } from "../../providers/PostsContext";
-import { PostCard } from "../../components/PostList/PostCard";
 import { PostList } from "../../components/PostList";
 
 export const HomePage = () => {

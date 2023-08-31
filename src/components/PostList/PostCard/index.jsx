@@ -1,6 +1,8 @@
 import styles from "./style.module.scss";
 
 export const PostCard = ({ post }) => {
+  const { getPostById } = useContext(PostsContext);
+
   return (
     <>
       {post.length == 0 ? (
@@ -13,9 +15,9 @@ export const PostCard = ({ post }) => {
             <div className={styles.containerBanner}>
               <img className={styles.banner} src={post.image} alt="" />
             </div>
-            <p className="paragraph small">Por: {post.owner}</p>
-            <h2 className="title three">{post.title}</h2>
-            <p className="paragraph link blue">Ler mais</p>
+            <p className="paragraph-small">Por: {post.owner}</p>
+            <h2 className="title-3">{post.title}</h2>
+            <button onClick={() => getPostById(post.id)}>Ler mais</button>
           </div>
         </li>
       )}
