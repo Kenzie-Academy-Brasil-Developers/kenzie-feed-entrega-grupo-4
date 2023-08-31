@@ -6,13 +6,13 @@ import styles from "./style.module.scss";
 
 export const FeedList = () => {
   const { postList } = useContext(PostsContext);
-
-  console.log(postList);
-
+  const { userId } = JSON.parse(localStorage.getItem("@UserData"));
+  const newPostList = postList?.filter((post) => post.userId === userId);
   return (
     <ul className={styles.container}>
-      {postList?.map((post) => (
+      {newPostList?.map((post) => (
         <FeedCard key={post.id} post={post} />
+        </ul>
       ))}
     </ul>
   );
