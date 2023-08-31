@@ -4,12 +4,11 @@ import { PostsContext } from "../../providers/PostsContext";
 
 export const FeedList = () => {
   const { postList } = useContext(PostsContext);
-
-  console.log(postList);
-
+  const { userId } = JSON.parse(localStorage.getItem("@UserData"));
+  const newPostList = postList?.filter((post) => post.userId === userId);
   return (
     <ul>
-      {postList?.map((post) => (
+      {newPostList?.map((post) => (
         <FeedCard key={post.id} post={post} />
       ))}
     </ul>

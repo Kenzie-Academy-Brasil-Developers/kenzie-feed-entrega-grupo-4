@@ -8,7 +8,9 @@ export const PostsContext = createContext({});
 export const PostsProvider = ({ children }) => {
   const [isOpenModalNewPost, setIsOpenModalNewPost] = useState(false);
   const [dataPost, setDataPost] = useState({
+    id: Number,
     title: String,
+    owner: String,
     image: String,
     description: String,
   });
@@ -27,12 +29,9 @@ export const PostsProvider = ({ children }) => {
   });
 
   const editPost = useMutation({
-    mutationFn: async (formData, postId) => {
-      const { token, userId, name } = JSON.parse(
-        localStorage.getItem("@UserData")
-      );
-      const newPost = [...formData, { userId: userId, name: name }];
-      return await apiFeed.put(`/posts/${postId}`, newPost, {
+    mutationFn: async (postUpdate) => {
+      const { token } = JSON.parse(localStorage.getItem("@UserData"));
+      return await apiFeed.put(`/posts/${postUpdate.id}`, postUpdate, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -41,6 +40,9 @@ export const PostsProvider = ({ children }) => {
     onSuccess: () => {
       revalidate();
       toast.success("Post editado com sucesso!");
+    },
+    onError: (err) => {
+      console.log(err);
     },
   });
 
@@ -56,8 +58,9 @@ export const PostsProvider = ({ children }) => {
         },
       });
     },
-    onSuccess: (teste) => {
-      console.log(teste);
+    onSuccess: () => {
+      revalidate();
+      setIsOpenModalNewPost(false);
     },
     onError: (err) => {
       console.log(err);
@@ -67,6 +70,7 @@ export const PostsProvider = ({ children }) => {
   const deletePost = useMutation({
     mutationFn: (postId) => {
       const { token } = JSON.parse(localStorage.getItem("@UserData"));
+      console.log(postId);
       return apiFeed.delete(`/posts/${postId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -74,7 +78,7 @@ export const PostsProvider = ({ children }) => {
       });
     },
     onSuccess: (teste) => {
-      console.log(teste);
+      revalidate();
     },
     onError: (err) => {
       console.log(err);
@@ -105,6 +109,22 @@ export const PostsProvider = ({ children }) => {
     });
   };
 
+  const postForId = async (postId) => {
+    try {
+      const { data } = await apiFeed(`/posts/${postId}`);
+      setDataPost({
+        id: data.id,
+        title: data.title,
+        image: data.image,
+        description: data.description,
+        owner: data.owner,
+        userId: data.userId,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <PostsContext.Provider
       value={{
@@ -119,6 +139,7 @@ export const PostsProvider = ({ children }) => {
         isLoading,
         addLikePost,
         deleteLikePost,
+        postForId,
       }}
     >
       {children}
