@@ -35,7 +35,6 @@ export const PostsProvider = ({ children }) => {
       return data;
     },
   });
-  console.log(isLoading);
 
   const editPost = useMutation({
     mutationFn: async (postUpdate) => {
@@ -96,7 +95,8 @@ export const PostsProvider = ({ children }) => {
 
   const addLikePost = useMutation({
     mutationFn: (postId) => {
-      const { token, userId } = JSON.parse(localStorage.getItem("@UserData"));
+      const { token, userId } =
+        JSON.parse(localStorage.getItem("@UserData")) || {};
 
       const dataLike = {
         userId: userId,

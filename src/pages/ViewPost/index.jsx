@@ -9,7 +9,7 @@ import { PostList } from "../../components/PostList";
 export const ViewPost = () => {
   const [currentPost, setCurrentPost] = useState([]);
   const { postList, lsPost, noLike, addLikePost } = useContext(PostsContext);
-  const { userId } = JSON.parse(localStorage.getItem("@UserData"));
+  const { userId } = JSON.parse(localStorage.getItem("@UserData")) || {};
 
   const numberLike = currentPost?.likes?.length;
   const isLiked = currentPost.likes;
