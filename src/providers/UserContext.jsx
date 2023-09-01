@@ -1,4 +1,4 @@
-import { createContext, useEffect } from "react";
+import { createContext } from "react";
 import { apiFeed } from "../services/api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,7 @@ export const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
   const navigate = useNavigate();
+
   const userLogin = async (dataLogin) => {
     try {
       const response = await apiFeed.post("login", dataLogin);
@@ -16,33 +17,29 @@ export const UserProvider = ({ children }) => {
         token: response.data.accessToken,
       };
       localStorage.setItem("@UserData", JSON.stringify(userData));
-      // navigate("dashboard");
+      navigate("dashboard");
       toast.success("Logado com sucesso!");
     } catch (error) {
       toast.error("E-mail ou senha incorretos");
     }
   };
 
-  const userRegister = async (formData, reset, setLoading) => {
+  const userRegister = async (formData) => {
     try {
-      // setLoading(true);
       const { data } = await apiFeed.post("users", formData);
       toast.success("Usuário criado com sucesso");
-      console.log("usuário cadastrado com sucesso");
-      console.log(data);
-      reset();
-      // navigate("/");
+      navigate("/loginPage");
     } catch (error) {
-      if (error.response.data.message === "Email already exists") {
+      console.log(error);
+      if (error.response.data === "Email already exists") {
         toast.error("Usuário já cadastrado");
       }
-    } finally {
-      // setLoading(false);
     }
   };
 
   const userLogout = () => {
     localStorage.removeItem("@UserData");
+    toast.success("Deslogado com sucesso");
     navigate("/");
   };
 

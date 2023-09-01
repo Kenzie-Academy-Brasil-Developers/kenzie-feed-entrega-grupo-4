@@ -1,11 +1,13 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import { apiFeed } from "../services/api";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export const PostsContext = createContext({});
 
 export const PostsProvider = ({ children }) => {
+  const navigate = useNavigate();
   const [isOpenModalNewPost, setIsOpenModalNewPost] = useState(false);
   const [lsPost, setLsPost] = useState(false);
 
@@ -48,6 +50,7 @@ export const PostsProvider = ({ children }) => {
     onSuccess: () => {
       revalidate();
       toast.success("Post editado com sucesso!");
+      navigate("dashboard");
     },
     onError: (err) => {
       console.log(err);
@@ -69,6 +72,7 @@ export const PostsProvider = ({ children }) => {
     onSuccess: () => {
       revalidate();
       setIsOpenModalNewPost(false);
+      toast.success("Post criado com sucesso!");
     },
     onError: (err) => {
       console.log(err);
@@ -87,6 +91,7 @@ export const PostsProvider = ({ children }) => {
     },
     onSuccess: () => {
       revalidate();
+      toast.success("Post deletado com sucesso!");
     },
     onError: (err) => {
       console.log(err);
