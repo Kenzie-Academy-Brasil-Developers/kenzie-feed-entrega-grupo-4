@@ -8,12 +8,11 @@ import { useContext } from "react";
 import { PostsContext } from "../../../providers/PostsContext";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+
 export const EditPage = () => {
   const { name } = JSON.parse(localStorage.getItem("@UserData"));
   const { dataPost, editPost } = useContext(PostsContext);
-
   const { handleSubmit, register } = useForm();
-
   const formData = (data) => {
     const newPost = {
       id: dataPost.id,
@@ -27,6 +26,25 @@ export const EditPage = () => {
   };
   return (
     <>
+      <div className="container">
+        <header className={style.header}>
+          <img src={logo} alt="Logo Kenzie" />
+          <div>
+            <div className={style.imgUser}>
+              <p className="paragraph">{name.substr(0, 1)}</p>
+            </div>
+            <Link
+              to={"/dashboard"}
+              className={`${"btn-outline"} ${style.link}`}
+            >
+              Dashboard
+            </Link>
+            <FiLogOut className={style.icon} />
+          </div>
+        </header>
+      </div>
+      <div className={style.colors}>
+        <div className={style.containerMain}>
           <main>
             <div className={style.headerMain}>
               <h2 className="title-2">Editando:</h2>
@@ -58,6 +76,8 @@ export const EditPage = () => {
               </button>
             </form>
           </main>
+        </div>
+      </div>
       <Footer />
     </>
   );
