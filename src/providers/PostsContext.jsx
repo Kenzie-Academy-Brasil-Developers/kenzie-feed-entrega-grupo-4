@@ -93,29 +93,42 @@ export const PostsProvider = ({ children }) => {
     },
   });
 
-  const addLikePost = (postId) => {
-    const { token, userId } = JSON.parse(localStorage.getItem("@UserData"));
+  const addLikePost = useMutation({
+    mutationFn: (postId) => {
+      const { token, userId } = JSON.parse(localStorage.getItem("@UserData"));
 
-    const dataLike = {
-      userId: userId,
-      postId: postId,
-    };
+      const dataLike = {
+        userId: userId,
+        postId: postId,
+      };
 
-    return apiFeed.post(`/likes`, dataLike, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-  };
+      return apiFeed.post(`/likes`, dataLike, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    },
+    onSuccess: () => {
+      revalidate();
+    },
+  });
 
-  const deleteLikePost = (postId) => {
-    const { token } = JSON.parse(localStorage.getItem("@UserData"));
-    return apiFeed.delete(`/likes/${postId}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-  };
+  const noLike = useMutation({
+    mutationFn: (postId) => {
+      const { token } = JSON.parse(localStorage.getItem("@UserData"));
+      return apiFeed.delete(`/likes/${postId}}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    },
+    onSuccess: () => {
+      revalidate();
+    },
+    onError: (err) => {
+      console.log(err);
+    },
+  });
 
   const postForId = async (postId) => {
     try {
@@ -149,7 +162,7 @@ export const PostsProvider = ({ children }) => {
         getPostById,
         postForId,
         lsPost,
-        deleteLikePost,
+        noLike,
         addLikePost,
       }}
     >
