@@ -6,6 +6,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { InputPassword } from "../InputPassword";
 import { UserContext } from "../../../providers/UserContext";
+import styles from "./style.module.scss";
 
 export const LoginForm = () => {
   const { userLogin } = useContext(UserContext);
@@ -26,7 +27,10 @@ export const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(submit)}>
+    <form
+      className={styles.loginForm__container}
+      onSubmit={handleSubmit(submit)}
+    >
       <Input
         type={"email"}
         placeholder={"E-mail"}
@@ -40,9 +44,13 @@ export const LoginForm = () => {
         error={errors.password}
         disabled={loading}
       />
-      <button type="submit">{!loading ? "Entrar" : "Entrando..."}</button>
-      <span> Não é cadastrado?</span>
-      <Link to={"/register"}>Cadastre-se</Link>
+      <button className="btn-large" type="submit">
+        {!loading ? "Entrar" : "Entrando..."}
+      </button>
+      <div className={styles.divRegister}>
+        <span>Não é cadastrado?</span>
+        <Link to={"/register"}>Cadastre-se</Link>
+      </div>
     </form>
   );
 };

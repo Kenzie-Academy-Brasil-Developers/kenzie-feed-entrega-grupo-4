@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import styles from "./style.module.scss";
 import { PostsContext } from "../../../providers/PostsContext";
+import { Link } from "react-router-dom";
 
 export const PostCard = ({ post }) => {
   const { getPostById } = useContext(PostsContext);
@@ -17,10 +18,11 @@ export const PostCard = ({ post }) => {
             <div className={styles.containerBanner}>
               <img className={styles.banner} src={post.image} alt="" />
             </div>
-            <p className="paragraph-small">Por: {post.owner}</p>
-            <h2 className="title-3">{post.title}</h2>
 
-            <button onClick={() => getPostById(post.id)}>Ler Sobre</button>
+            <p className="paragraph small">Por: {post.owner}</p>
+            <h2 className="title three">{post.title}</h2>
+            <Link className="paragraph link blue" onClick={() => getPostById(post.id)}>Leia mais</Link>
+
           </div>
         </li>
       )}
