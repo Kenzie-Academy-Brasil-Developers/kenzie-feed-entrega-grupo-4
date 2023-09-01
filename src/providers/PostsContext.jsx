@@ -9,14 +9,15 @@ export const PostsContext = createContext({});
 export const PostsProvider = ({ children }) => {
   const navigate = useNavigate();
   const [isOpenModalNewPost, setIsOpenModalNewPost] = useState(false);
+  const [lsPost, setLsPost] = useState(false);
 
   const revalidate = () => {
     client.invalidateQueries({ queryKey: "post" });
   };
 
   const getPostById = async (postId) => {
-    const { data } = await apiFeed.get(`posts/${postId}?_embed=likes`);
-    localStorage.setItem("@PostId", data.id);
+    localStorage.setItem("@PostId", postId);
+    setLsPost(postId);
     navigate("/viewPost");
   };
 
@@ -151,6 +152,7 @@ export const PostsProvider = ({ children }) => {
         deleteLikePost,
         getPostById,
         postForId,
+        lsPost,
       }}
     >
       {children}

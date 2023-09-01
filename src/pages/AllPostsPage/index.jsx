@@ -16,8 +16,6 @@ export const AllPostsPage = () => {
     draftPostList.reverse();
   });
 
-  console.log(postListReversed);
-
   return (
     <>
       <div className="container">
