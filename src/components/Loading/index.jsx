@@ -1,4 +1,4 @@
-import LoadingIcon from "../../assets/LogoError.gif";
+import LoadingIcon from "../../assets/loading.gif";
 import styles from "./style.module.scss";
 
 export const Loading = () => {
