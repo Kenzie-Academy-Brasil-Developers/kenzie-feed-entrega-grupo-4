@@ -4,6 +4,7 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import styles from "../ViewPost/style.module.scss";
 import { PostsContext } from "../../providers/PostsContext";
 import { apiFeed } from "../../services/api";
+import { produce } from "immer";
 import { PostList } from "../../components/PostList";
 
 export const ViewPost = () => {
@@ -21,6 +22,14 @@ export const ViewPost = () => {
     requestPostById();
   }, [lsPost]);
 
+  const postListTrue = postList || [];
+
+  const postListReversed = produce(postListTrue, (draftPostList) => {
+    draftPostList.reverse();
+  });
+
+  const readMore = postListReversed.slice(0, 2);
+
   const [countLike, setCountLike] = useState(0);
 
   return (
@@ -28,7 +37,7 @@ export const ViewPost = () => {
       <section className={styles.contents}>
         <div className={styles.viewPost}>
           <div className={styles.postTitle}>
-            <span className="paragraph">Por:{currentPost?.owner}</span>
+            <span className="paragraph">Por: {currentPost?.owner}</span>
             <h1 className="title two textCenter">{currentPost?.title}</h1>
           </div>
           <img className={styles.bannerPost} src={currentPost?.image} alt="" />
@@ -64,7 +73,7 @@ export const ViewPost = () => {
         <div className={styles.more}>
           <h2 className="title one">Leia também</h2>
         </div>
-        <PostList postList={postList} />
+        <PostList postList={readMore} />
       </section>
     </DefaultTemplate>
   );

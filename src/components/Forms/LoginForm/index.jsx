@@ -27,23 +27,22 @@ export const LoginForm = () => {
   };
 
   return (
-    <form
-      className={styles.loginForm__container}
-      onSubmit={handleSubmit(submit)}
-    >
-      <Input
-        type={"email"}
-        placeholder={"E-mail"}
-        {...register("email")}
-        error={errors.email}
-        disabled={loading}
-      />
-      <InputPassword
-        placeholder={"Senha"}
-        {...register("password")}
-        error={errors.password}
-        disabled={loading}
-      />
+    <form className={styles.loginForm} onSubmit={handleSubmit(submit)}>
+      <div className={styles.inputContainer}>
+        <Input
+          type={"email"}
+          placeholder={"E-mail"}
+          {...register("email")}
+          error={errors.email}
+          disabled={loading}
+        />
+        <InputPassword
+          placeholder={"Senha"}
+          {...register("password")}
+          error={errors.password}
+          disabled={loading}
+        />
+      </div>
       <button className="btn-large" type="submit">
         {!loading ? "Entrar" : "Entrando..."}
       </button>

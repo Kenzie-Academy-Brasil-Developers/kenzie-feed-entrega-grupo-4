@@ -9,24 +9,20 @@ export const RegisterPage = () => {
   return (
     <DefaultTemplate>
       <div className={styles.main}>
-        <div className="container">
-          <div className={styles.containerBox}>
-            <Link to={"/loginPage"} className="btn-outline icon">
-              <MdArrowBack size={24} />
-              <span>Voltar</span>
-            </Link>
-            <section>
-              <h1 className="title two black textCenter">
-                Cadastre um usuário
-              </h1>
-              <span className="paragraph textCenter">
-                Preencha os campos corretamente para fazer login
-              </span>
-              <div>
-                <RegisterForm />
-              </div>
-            </section>
-          </div>
+        <div className={styles.containerBox}>
+          <Link to={"/loginPage"} className="btn-outline icon">
+            <MdArrowBack size={24} />
+            <span>Voltar</span>
+          </Link>
+          <section>
+            <h1 className="title two black textCenter">Cadastre um usuário</h1>
+            <span className="paragraph textCenter">
+              Preencha os campos corretamente para fazer login
+            </span>
+            <div>
+              <RegisterForm />
+            </div>
+          </section>
         </div>
       </div>
     </DefaultTemplate>

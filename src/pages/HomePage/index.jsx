@@ -1,5 +1,3 @@
-import { Footer } from "../../components/Footer";
-import { Header } from "../../components/Header";
 import banner from "../../assets/Banner.jpeg";
 import styles from "../HomePage/style.module.scss";
 import { useNavigate } from "react-router-dom";
@@ -19,6 +17,9 @@ export const HomePage = () => {
   const postListReversed = produce(postListTrue, (draftPostList) => {
     draftPostList.reverse();
   });
+
+  const lastNews = postListReversed.slice(0, 4);
+
   return (
     <DefaultTemplate>
       <section>
@@ -42,7 +43,7 @@ export const HomePage = () => {
             Ver tudo
           </button>
         </div>
-        <PostList postList={postListReversed} />
+        <PostList postList={lastNews} />
       </section>
     </DefaultTemplate>
   );
