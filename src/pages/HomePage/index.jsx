@@ -19,6 +19,9 @@ export const HomePage = () => {
   const postListReversed = produce(postListTrue, (draftPostList) => {
     draftPostList.reverse();
   });
+
+  const lastNews = postListReversed.slice(0, 4);
+
   return (
     <DefaultTemplate>
       <section>
@@ -42,7 +45,7 @@ export const HomePage = () => {
             Ver tudo
           </button>
         </div>
-        <PostList postList={postListReversed} />
+        <PostList postList={lastNews} />
       </section>
     </DefaultTemplate>
   );
