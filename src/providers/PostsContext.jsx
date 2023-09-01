@@ -35,6 +35,7 @@ export const PostsProvider = ({ children }) => {
       return data;
     },
   });
+  console.log(isLoading);
 
   const editPost = useMutation({
     mutationFn: async (postUpdate) => {
