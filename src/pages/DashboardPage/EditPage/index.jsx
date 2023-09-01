@@ -27,25 +27,6 @@ export const EditPage = () => {
   };
   return (
     <>
-      <div className="container">
-        <header className={style.header}>
-          <img src={logo} alt="Logo Kenzie" />
-          <div>
-            <div className={style.imgUser}>
-              <p className="paragraph">{name.substr(0, 1)}</p>
-            </div>
-            <Link
-              to={"/dashboard"}
-              className={`${"btn-outline"} ${style.link}`}
-            >
-              Dashboard
-            </Link>
-            <FiLogOut className={style.icon} />
-          </div>
-        </header>
-      </div>
-      <div className={style.colors}>
-        <div className={style.containerMain}>
           <main>
             <div className={style.headerMain}>
               <h2 className="title-2">Editando:</h2>
@@ -77,8 +58,6 @@ export const EditPage = () => {
               </button>
             </form>
           </main>
-        </div>
-      </div>
       <Footer />
     </>
   );

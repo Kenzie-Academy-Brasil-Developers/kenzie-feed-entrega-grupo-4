@@ -9,7 +9,7 @@ export const FeedList = () => {
   const newPostList = postList?.filter((post) => post.userId === userId);
   return (
     
-    <ul>
+    <ul >
       {newPostList?.map((post) => (
         <FeedCard key={post.id} post={post} />
       ))}
