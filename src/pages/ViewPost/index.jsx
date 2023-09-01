@@ -27,7 +27,7 @@ export const ViewPost = () => {
   const seeAlso = postList?.filter((post) => post.id !== currentPost?.id);
   return (
     <DefaultTemplate>
-      <main className="container">
+      <div>
         <section className={styles.contents}>
           <div className={styles.viewPost}>
             <div className={styles.postTitle}>
@@ -82,7 +82,7 @@ export const ViewPost = () => {
           </div>
           <PostList postList={seeAlso} />
         </section>
-      </main>
+      </div>
     </DefaultTemplate>
   );
 };
