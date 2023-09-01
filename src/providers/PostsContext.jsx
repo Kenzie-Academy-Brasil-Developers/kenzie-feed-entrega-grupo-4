@@ -95,7 +95,8 @@ export const PostsProvider = ({ children }) => {
 
   const addLikePost = useMutation({
     mutationFn: (postId) => {
-      const { token, userId } = JSON.parse(localStorage.getItem("@UserData"));
+      const { token, userId } =
+        JSON.parse(localStorage.getItem("@UserData")) || {};
 
       const dataLike = {
         userId: userId,
