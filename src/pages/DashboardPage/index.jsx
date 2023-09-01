@@ -8,11 +8,13 @@ import { ModalNewPost } from "../../components/Modal/ModalNewPost";
 import { useContext } from "react";
 import { FormNewPost } from "../../components/Forms/NewpostForm";
 import styles from "./style.module.scss";
+import { UserContext } from "../../providers/UserContext";
 import { useNavigate } from "react-router-dom";
 
 export const DashboardPage = () => {
   const { isOpenModalNewPost, setIsOpenModalNewPost } =
     useContext(PostsContext);
+  const { userLogout } = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -26,7 +28,12 @@ export const DashboardPage = () => {
           <p className="paragraph">{name.substr(0, 1)}</p>
           <button className="btn-outline">Dashboard</button>
           <button>
-            <MdLogout title="Logout" aria-label="sair" size={20} />
+            <MdLogout
+              title="Logout"
+              aria-label="sair"
+              size={20}
+              onClick={() => userLogout()}
+            />
           </button>
         </div>
       </header>

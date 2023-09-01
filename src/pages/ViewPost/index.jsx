@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { DefaultTemplate } from "../../components/DefaultTemplate";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import styles from "../ViewPost/style.module.scss";
@@ -7,6 +7,8 @@ import { apiFeed } from "../../services/api";
 import { PostList } from "../../components/PostList";
 
 export const ViewPost = () => {
+  const [disableLike, setDisableLike] = useState(false);
+
   const [currentPost, setCurrentPost] = useState([]);
   const { postList, lsPost, removeLike, addLikePost } =
     useContext(PostsContext);
@@ -16,7 +18,8 @@ export const ViewPost = () => {
   const numberLike = currentPost?.likes?.length;
   const isLiked = currentPost.likes;
   const imLiked = isLiked?.filter((likes) => likes.userId === userId);
-  console.log(imLiked);
+  const btnLike = useRef(0);
+
   useEffect(() => {
     const requestPostById = async () => {
       const postId = localStorage.getItem("@PostId");
@@ -48,24 +51,30 @@ export const ViewPost = () => {
               {imLiked?.length > 0 ? (
                 <div className={styles.liked}>
                   <AiFillHeart
+                    className={styles.icon}
                     size={20}
                     type="button"
-                    onClick={() =>
-                      imLiked.length === 1
-                        ? removeLike.mutate(imLiked[0].id)
-                        : null
-                    }
+                    onClick={() => {
+                      setDisableLike(false),
+                        imLiked.length === 1 ? removeLike(imLiked[0].id) : [];
+                    }}
                   />{" "}
                   <span className="paragraph small">{numberLike} Curtida</span>
                 </div>
               ) : (
                 <div className={styles.liked}>
-                  <AiOutlineHeart
-                    size={20}
-                    type="button"
-                    onClick={() => addLikePost.mutate(currentPost?.id)}
-                    className={styles.teste}
-                  />
+                  <button
+                    onClick={(e) => {
+                      setDisableLike(true), addLikePost.mutate(currentPost?.id);
+                    }}
+                    disabled={disableLike}
+                  >
+                    <AiOutlineHeart
+                      size={20}
+                      type="button"
+                      className={styles.icon}
+                    />
+                  </button>
                   {numberLike <= 0 ? (
                     <span className="paragraph small">
                       Seja o primeiro a curtir este post
