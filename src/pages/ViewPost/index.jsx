@@ -1,23 +1,26 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { DefaultTemplate } from "../../components/DefaultTemplate";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import { PostList } from "../../components/PostList";
 import styles from "../ViewPost/style.module.scss";
 import { PostsContext } from "../../providers/PostsContext";
-import { useQuery } from "react-query";
 import { apiFeed } from "../../services/api";
+import { PostList } from "../../components/PostList";
 
 export const ViewPost = () => {
-  const { data: currentPost } = useQuery({
-    queryKey: ["post"],
-    queryFn: async () => {
+  const { postList, lsPost } = useContext(PostsContext);
+  const [like, setLike] = useState(false);
+
+  const [currentPost, setCurrentPost] = useState([]);
+
+  useEffect(() => {
+    const requestPostById = async () => {
       const postId = localStorage.getItem("@PostId");
       const { data } = await apiFeed.get(`posts/${postId}?_embed=likes`);
-      return data;
-    },
-  });
+      setCurrentPost(data);
+    };
+    requestPostById();
+  }, [lsPost]);
 
-  const [like, setLike] = useState(false);
   const [countLike, setCountLike] = useState(0);
 
   return (
@@ -72,8 +75,7 @@ export const ViewPost = () => {
           <div className={styles.more}>
             <h2 className="title one">Leia também</h2>
           </div>
-
-          <PostList />
+          <PostList postList={postList} />
         </section>
       </main>
     </DefaultTemplate>

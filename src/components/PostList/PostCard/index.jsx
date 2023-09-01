@@ -19,7 +19,8 @@ export const PostCard = ({ post }) => {
             </div>
             <p className="paragraph-small">Por: {post.owner}</p>
             <h2 className="title-3">{post.title}</h2>
-            <button onClick={() => getPostById(post.id)}>Ler mais</button>
+
+            <button onClick={() => getPostById(post.id)}>Ler Sobre</button>
           </div>
         </li>
       )}
