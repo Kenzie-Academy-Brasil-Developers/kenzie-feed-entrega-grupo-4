@@ -101,7 +101,7 @@ export const PostsProvider = ({ children }) => {
       postId: postId,
     };
 
-    return apiFeed.delete(`/likes`, dataLike, {
+    return apiFeed.post(`/likes`, dataLike, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -146,10 +146,11 @@ export const PostsProvider = ({ children }) => {
         setDataPost,
         isLoading,
         addLikePost,
-        deleteLikePost,
         getPostById,
         postForId,
         lsPost,
+        deleteLikePost,
+        addLikePost,
       }}
     >
       {children}
