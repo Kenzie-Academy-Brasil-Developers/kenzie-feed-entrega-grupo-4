@@ -9,13 +9,14 @@ import { PostList } from "../../components/PostList";
 export const ViewPost = () => {
   const [currentPost, setCurrentPost] = useState([]);
   const { postList, lsPost, removeLike, addLikePost } =
-  const { postList, lsPost, noLike, addLikePost } = useContext(PostsContext);
+    useContext(PostsContext);
+
   const { userId } = JSON.parse(localStorage.getItem("@UserData")) || {};
 
   const numberLike = currentPost?.likes?.length;
   const isLiked = currentPost.likes;
   const imLiked = isLiked?.filter((likes) => likes.userId === userId);
-
+  console.log(imLiked);
   useEffect(() => {
     const requestPostById = async () => {
       const postId = localStorage.getItem("@PostId");
@@ -49,7 +50,11 @@ export const ViewPost = () => {
                   <AiFillHeart
                     size={20}
                     type="button"
-                    onClick={() => removeLike.mutate(currentPost?.id)}
+                    onClick={() =>
+                      imLiked.length === 1
+                        ? removeLike.mutate(imLiked[0].id)
+                        : null
+                    }
                   />{" "}
                   <span className="paragraph small">{numberLike} Curtida</span>
                 </div>
