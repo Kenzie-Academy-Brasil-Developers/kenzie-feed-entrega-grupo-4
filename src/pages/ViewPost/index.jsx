@@ -10,6 +10,7 @@ export const ViewPost = () => {
   const [currentPost, setCurrentPost] = useState([]);
   const { postList, lsPost, noLike, addLikePost } = useContext(PostsContext);
   const { userId } = JSON.parse(localStorage.getItem("@UserData"));
+
   const numberLike = currentPost?.likes?.length;
   const isLiked = currentPost.likes;
   const imLiked = isLiked?.filter((likes) => likes.userId === userId);
@@ -21,8 +22,9 @@ export const ViewPost = () => {
       setCurrentPost(data);
     };
     requestPostById();
-  }, [lsPost]);
+  }, [lsPost, addLikePost]);
 
+  const seeAlso = postList?.filter((post) => post.id !== currentPost?.id);
   return (
     <DefaultTemplate>
       <main className="container">
@@ -78,7 +80,7 @@ export const ViewPost = () => {
           <div className={styles.more}>
             <h2 className="title one">Leia também</h2>
           </div>
-          <PostList postList={postList} />
+          <PostList postList={seeAlso} />
         </section>
       </main>
     </DefaultTemplate>
