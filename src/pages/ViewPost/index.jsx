@@ -7,7 +7,8 @@ import { apiFeed } from "../../services/api";
 import { PostList } from "../../components/PostList";
 
 export const ViewPost = () => {
-  const { postList, lsPost } = useContext(PostsContext);
+  const { postList, lsPost, deleteLikePost, addLikePost } =
+    useContext(PostsContext);
   const [like, setLike] = useState(false);
 
   const [currentPost, setCurrentPost] = useState([]);
@@ -39,19 +40,35 @@ export const ViewPost = () => {
             />
             <div className={styles.like}>
               {like ? (
-                <AiOutlineHeart
-                  size={20}
-                  type="button"
-                  onClick={() => setLike(!like)}
-                />
+                <div className={styles.liked}>
+                  <AiFillHeart
+                    size={20}
+                    type="button"
+                    onClick={() => setLike(!like)}
+                  />{" "}
+                  <span
+                    className="paragraph small"
+                    onClick={() => setLike(!like)}
+                  >
+                    {countLike} Curtida
+                  </span>
+                </div>
               ) : (
-                <AiFillHeart
-                  size={20}
-                  type="button"
-                  onClick={() => setLike(!like)}
-                />
+                <div className={styles.liked}>
+                  <AiOutlineHeart
+                    size={20}
+                    type="button"
+                    onClick={() => setLike(!like)}
+                  />
+                  <span
+                    className="paragraph small"
+                    onClick={() => setLike(!like)}
+                  >
+                    Seja o primeiro a curtir este post{" "}
+                  </span>
+                </div>
               )}
-              {like ? (
+              {/* {like ? (
                 <span
                   className="paragraph small"
                   onClick={() => setLike(!like)}
@@ -65,7 +82,7 @@ export const ViewPost = () => {
                 >
                   {countLike} Curtida
                 </span>
-              )}
+              )} */}
             </div>
             <p className="paragraph">{currentPost?.description}</p>
           </div>
