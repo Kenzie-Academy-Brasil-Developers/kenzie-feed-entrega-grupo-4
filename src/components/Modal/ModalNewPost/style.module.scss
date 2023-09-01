@@ -1,4 +1,6 @@
 .modalOverlay {
+  z-index: 1;
+  padding: 32px;
   position: fixed;
   display: flex;
   justify-content: center;
@@ -14,7 +16,7 @@
     position: relative;
     width: 100%;
     max-width: 798px;
-
+    padding: 35px 47px;
     background-color: var(--color-white);
 
     border-radius: 3.209px;
@@ -25,17 +27,17 @@
       justify-content: space-between;
       align-items: center;
       background-color: var(--grey-2);
+      margin-bottom: 31px;
 
-      height: 40px;
-
-      padding: 23px 1rem;
-    }
-
-    .closeButton {
-      color: var(--grey-1);
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
+      .closeButton {
+        color: var(--grey-1);
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        position: absolute;
+        right: 13px;
+        top: 16px;
+      }
     }
   }
 }

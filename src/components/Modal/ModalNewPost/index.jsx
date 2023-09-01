@@ -1,6 +1,7 @@
 import { useContext, useEffect, useRef } from "react";
 import { PostsContext } from "../../../providers/PostsContext";
 import styles from "./style.module.scss";
+import { AiOutlineClose } from "react-icons/ai";
 
 export const ModalNewPost = ({ children }) => {
   const { setIsOpenModalNewPost } = useContext(PostsContext);
@@ -41,13 +42,13 @@ export const ModalNewPost = ({ children }) => {
     <div role="dialog" className={styles.modalOverlay}>
       <div ref={modalNewPostRef} className={styles.modalBox}>
         <div className={styles.modalHeader}>
-          <p className="">Novo post</p>
+          <p className="title two">Novo post</p>
           <button
             ref={buttonRef}
             className={styles.closeButton}
             onClick={() => setIsOpenModalNewPost(false)}
           >
-            X
+            <AiOutlineClose size={30} color="#00000050" />
           </button>
         </div>
         {children}
