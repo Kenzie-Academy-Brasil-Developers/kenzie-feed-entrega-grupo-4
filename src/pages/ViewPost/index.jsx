@@ -8,7 +8,8 @@ import { PostList } from "../../components/PostList";
 
 export const ViewPost = () => {
   const [currentPost, setCurrentPost] = useState([]);
-  const { postList, lsPost, noLike, addLikePost } = useContext(PostsContext);
+  const { postList, lsPost, removeLike, addLikePost } =
+    useContext(PostsContext);
   const { userId } = JSON.parse(localStorage.getItem("@UserData"));
 
   const numberLike = currentPost?.likes?.length;
@@ -45,7 +46,7 @@ export const ViewPost = () => {
                   <AiFillHeart
                     size={20}
                     type="button"
-                    onClick={() => noLike.mutate(currentPost?.id)}
+                    onClick={() => removeLike.mutate(currentPost?.id)}
                   />{" "}
                   <span className="paragraph small">{numberLike} Curtida</span>
                 </div>
@@ -62,10 +63,7 @@ export const ViewPost = () => {
                       Seja o primeiro a curtir este post
                     </span>
                   ) : (
-                    <span
-                      className="paragraph small"
-                      onClick={() => setLike(!like)}
-                    >
+                    <span className="paragraph small">
                       {numberLike} Curtida
                     </span>
                   )}

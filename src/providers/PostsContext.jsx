@@ -85,7 +85,7 @@ export const PostsProvider = ({ children }) => {
         },
       });
     },
-    onSuccess: (teste) => {
+    onSuccess: () => {
       revalidate();
     },
     onError: (err) => {
@@ -113,7 +113,7 @@ export const PostsProvider = ({ children }) => {
     },
   });
 
-  const noLike = useMutation({
+  const removeLike = useMutation({
     mutationFn: (postId) => {
       const { token } = JSON.parse(localStorage.getItem("@UserData"));
       return apiFeed.delete(`/likes/${postId}}`, {
@@ -158,11 +158,10 @@ export const PostsProvider = ({ children }) => {
         dataPost,
         setDataPost,
         isLoading,
-        addLikePost,
         getPostById,
         postForId,
         lsPost,
-        noLike,
+        removeLike,
         addLikePost,
       }}
     >
