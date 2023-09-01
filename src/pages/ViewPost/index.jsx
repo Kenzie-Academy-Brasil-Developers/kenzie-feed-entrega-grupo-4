@@ -7,10 +7,12 @@ import { apiFeed } from "../../services/api";
 import { PostList } from "../../components/PostList";
 
 export const ViewPost = () => {
-  const { postList, lsPost } = useContext(PostsContext);
-  const [like, setLike] = useState(false);
-
   const [currentPost, setCurrentPost] = useState([]);
+  const { postList, lsPost, noLike, addLikePost } = useContext(PostsContext);
+  const { userId } = JSON.parse(localStorage.getItem("@UserData"));
+  const numberLike = currentPost?.likes?.length;
+  const isLiked = currentPost.likes;
+  const imLiked = isLiked?.filter((likes) => likes.userId === userId);
 
   useEffect(() => {
     const requestPostById = async () => {
@@ -20,8 +22,6 @@ export const ViewPost = () => {
     };
     requestPostById();
   }, [lsPost]);
-
-  const [countLike, setCountLike] = useState(0);
 
   return (
     <DefaultTemplate>
@@ -38,33 +38,36 @@ export const ViewPost = () => {
               alt=""
             />
             <div className={styles.like}>
-              {like ? (
-                <AiOutlineHeart
-                  size={20}
-                  type="button"
-                  onClick={() => setLike(!like)}
-                />
+              {imLiked?.length > 0 ? (
+                <div className={styles.liked}>
+                  <AiFillHeart
+                    size={20}
+                    type="button"
+                    onClick={() => noLike.mutate(currentPost?.id)}
+                  />{" "}
+                  <span className="paragraph small">{numberLike} Curtida</span>
+                </div>
               ) : (
-                <AiFillHeart
-                  size={20}
-                  type="button"
-                  onClick={() => setLike(!like)}
-                />
-              )}
-              {like ? (
-                <span
-                  className="paragraph small"
-                  onClick={() => setLike(!like)}
-                >
-                  Seja o primeiro a curtir este post{" "}
-                </span>
-              ) : (
-                <span
-                  className="paragraph small"
-                  onClick={() => setLike(!like)}
-                >
-                  {countLike} Curtida
-                </span>
+                <div className={styles.liked}>
+                  <AiOutlineHeart
+                    size={20}
+                    type="button"
+                    onClick={() => addLikePost.mutate(currentPost?.id)}
+                    className={styles.teste}
+                  />
+                  {numberLike <= 0 ? (
+                    <span className="paragraph small">
+                      Seja o primeiro a curtir este post
+                    </span>
+                  ) : (
+                    <span
+                      className="paragraph small"
+                      onClick={() => setLike(!like)}
+                    >
+                      {numberLike} Curtida
+                    </span>
+                  )}
+                </div>
               )}
             </div>
             <p className="paragraph">{currentPost?.description}</p>
