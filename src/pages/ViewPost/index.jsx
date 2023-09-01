@@ -8,10 +8,13 @@ import { produce } from "immer";
 import { PostList } from "../../components/PostList";
 
 export const ViewPost = () => {
-  const { postList, lsPost } = useContext(PostsContext);
-  const [like, setLike] = useState(false);
-
   const [currentPost, setCurrentPost] = useState([]);
+  const { postList, lsPost, noLike, addLikePost } = useContext(PostsContext);
+  const { userId } = JSON.parse(localStorage.getItem("@UserData"));
+
+  const numberLike = currentPost?.likes?.length;
+  const isLiked = currentPost.likes;
+  const imLiked = isLiked?.filter((likes) => likes.userId === userId);
 
   useEffect(() => {
     const requestPostById = async () => {
@@ -20,25 +23,27 @@ export const ViewPost = () => {
       setCurrentPost(data);
     };
     requestPostById();
-  }, [lsPost]);
+  }, [lsPost, addLikePost]);
 
-  const postListTrue = postList || [];
+//   const postListTrue = postList || [];
 
-  const postListReversed = produce(postListTrue, (draftPostList) => {
-    draftPostList.reverse();
-  });
+//   const postListReversed = produce(postListTrue, (draftPostList) => {
+//     draftPostList.reverse();
+//   });
 
-  const readMore = postListReversed.slice(0, 2);
+//   const readMore = postListReversed.slice(0, 2);
 
-  const [countLike, setCountLike] = useState(0);
 
+
+
+  const seeAlso = postList?.filter((post) => post.id !== currentPost?.id);
   return (
     <DefaultTemplate>
-      <section className={styles.contents}>
-        <div className={styles.viewPost}>
-          <div className={styles.postTitle}>
-            <span className="paragraph">Por: {currentPost?.owner}</span>
-            <h1 className="title two textCenter">{currentPost?.title}</h1>
+        <section className={styles.contents}>
+          <div className={styles.viewPost}>
+            <div className={styles.postTitle}>
+              <span className="paragraph">Por:{currentPost?.owner}</span>
+              <h1 className="title two textCenter">{currentPost?.title}</h1>
           </div>
           <img className={styles.bannerPost} src={currentPost?.image} alt="" />
           <div className={styles.like}>
@@ -75,6 +80,7 @@ export const ViewPost = () => {
         </div>
         <PostList postList={readMore} />
       </section>
+
     </DefaultTemplate>
   );
 };
