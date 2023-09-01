@@ -43,6 +43,8 @@ export const EditPage = () => {
             <FiLogOut className={style.icon} />
           </div>
         </header>
+      </div>
+      <div className={style.colors}>
         <div className={style.containerMain}>
           <main>
             <div className={style.headerMain}>
@@ -76,8 +78,8 @@ export const EditPage = () => {
             </form>
           </main>
         </div>
-        <Footer />
       </div>
+      <Footer />
     </>
   );
 };

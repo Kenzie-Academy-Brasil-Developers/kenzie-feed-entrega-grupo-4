@@ -21,8 +21,13 @@ export const PostCard = ({ post }) => {
 
             <p className="paragraph small">Por: {post.owner}</p>
             <h2 className="title three">{post.title}</h2>
-            <Link className="paragraph link blue" onClick={() => getPostById(post.id)}>Leia mais</Link>
-
+            <Link
+              to={"/viewPost"}
+              className="paragraph link blue"
+              onClick={() => getPostById(post.id)}
+            >
+              Leia mais
+            </Link>
           </div>
         </li>
       )}

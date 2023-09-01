@@ -2,12 +2,10 @@ import { createContext, useEffect, useState } from "react";
 import { apiFeed } from "../services/api";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 
 export const PostsContext = createContext({});
 
 export const PostsProvider = ({ children }) => {
-  const navigate = useNavigate();
   const [isOpenModalNewPost, setIsOpenModalNewPost] = useState(false);
   const [lsPost, setLsPost] = useState(false);
 
@@ -18,7 +16,6 @@ export const PostsProvider = ({ children }) => {
   const getPostById = async (postId) => {
     localStorage.setItem("@PostId", postId);
     setLsPost(postId);
-    navigate("/viewPost");
   };
 
   const [dataPost, setDataPost] = useState({
