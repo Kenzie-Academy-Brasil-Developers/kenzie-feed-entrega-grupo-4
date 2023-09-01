@@ -1,64 +1,52 @@
-.btnCard__container {
-  position: relative;
-  top: 8.75rem;
-
+.cards {
   display: flex;
-  justify-content: space-around;
-  margin-bottom: 8px;
-  padding: 2px 5px;
-  border-radius: 0 0 14px 14px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 46px;
 
-  filter: opacity(0.5);
+  .contents {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
 
-  button {
-    color: var(--color-blue);
+    img {
+      width: 153px;
+      height: 138px;
+      border-radius: 25px;
+      object-fit: cover;
+    }
+  }
+
+  .interaction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
   }
 }
 
-.btnCard__container:hover {
-    filter: none;
-}
+@media (max-width: 550px) {
+  .cards {
+    flex-direction: column;
 
-.cardPost {
-  h2 {
-    font-weight: 700;
+    .contents {
+      flex-direction: column;
+
+      img {
+        width: 306px;
+        height: 196px;
+      }
+    }
+
+    .interaction {
+      position: absolute;
+      margin-top: 134px;
+      margin-right: 10px;
+      gap: 45px;
+      background-color: #ffffff98;
+      padding: 18px;
+      border-radius: 255px;
+    }
   }
-
-  img {
-    border-radius: 25px;
-  }
 }
-
-@media (min-width: 900px) {
-
-    .feedCard__container {
-        max-width: 810px;
-        display: flex;
-        justify-content: space-around;
-        flex-direction: column;
-    }
-
-    .btnCard__container {
-        top: 5.6875rem;
-        justify-content: end;
-        align-items: center;
-        gap: 8px;
-        filter: none;
-    }
-
-    .cardPost {
-        margin: 0 auto;
-        display: flex;
-        flex-direction: row;
-        gap: 20px;
-
-        align-items: center;
-    }
-
-    .cardPost img {
-        max-width: 145px;
-        height: 135px;
-    }
-}
-
-

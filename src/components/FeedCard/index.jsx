@@ -14,22 +14,29 @@ export const FeedCard = ({ post }) => {
   };
   return (
     <li>
-      <div className={styles.feedCard__container}>
-        <div className={styles.btnCard__container}>
+      <div className={styles.cards}>
+        <div className={styles.contents}>
+          <img src={post.image} alt={post.title} />
+          <h4 className="titile one ">{post.title}</h4>
+        </div>
+
+        <div className={styles.interaction}>
           <button onClick={() => btnEdit(post.id)}>
-            <MdEdit title="BtnEdit" aria-label="editar post" size={21} />
+            <MdEdit
+              title="BtnEdit"
+              aria-label="editar post"
+              size={21}
+              color="#55a3ff"
+            />
           </button>
           <button onClick={() => deletePost.mutate(post.id)}>
             <RiDeleteBin6Line
               title="BtnDelete"
               aria-label="excluir post"
               size={21}
+              color="#55a3ff"
             />
           </button>
-        </div>
-        <div className={styles.cardPost}>
-          <img src={post.image} alt={post.title} />
-          <h4 className="titile one ">{post.title}</h4>
         </div>
       </div>
     </li>
