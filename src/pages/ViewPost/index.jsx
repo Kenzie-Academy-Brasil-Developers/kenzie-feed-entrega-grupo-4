@@ -25,6 +25,9 @@ export const ViewPost = () => {
   }, [lsPost, addLikePost]);
 
   const seeAlso = postList?.filter((post) => post.id !== currentPost?.id);
+
+  const readMore = seeAlso.slice(0, 2);
+
   return (
     <DefaultTemplate>
       <div>
@@ -80,7 +83,7 @@ export const ViewPost = () => {
           <div className={styles.more}>
             <h2 className="title one">Leia também</h2>
           </div>
-          <PostList postList={seeAlso} />
+          <PostList postList={readMore} />
         </section>
       </div>
     </DefaultTemplate>
