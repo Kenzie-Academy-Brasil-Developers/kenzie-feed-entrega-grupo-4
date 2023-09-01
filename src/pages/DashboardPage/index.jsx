@@ -9,17 +9,22 @@ import { useContext } from "react";
 import { FormNewPost } from "../../components/Forms/NewpostForm";
 import styles from "./style.module.scss";
 import { UserContext } from "../../providers/UserContext";
+import { useNavigate } from "react-router-dom";
 
 export const DashboardPage = () => {
   const { isOpenModalNewPost, setIsOpenModalNewPost } =
     useContext(PostsContext);
   const { userLogout } = useContext(UserContext);
+
+  const navigate = useNavigate();
+
   const { name } = JSON.parse(localStorage.getItem("@UserData"));
   return (
     <>
-      <header className={`${styles.header__container} container`}>
-        <img src={logo} alt="logo-kz" />
-        <div className={styles.buttons__container}>
+    <div className="container">
+      <header className={styles.header}>
+        <img onClick={() => navigate("/")} src={logo} alt="logo-kz" />
+        <div className={styles.userLogged}>
           <p className="paragraph">{name.substr(0, 1)}</p>
           <button className="btn-outline">Dashboard</button>
           <button>
@@ -37,26 +42,31 @@ export const DashboardPage = () => {
           <FormNewPost />
         </ModalNewPost>
       ) : null}
-      <main className={`${styles.main__container} container`}>
-        <div className={styles.feedHeader__container}>
-          <h2 className="title three">Suas publicações</h2>
-          <button
-            onClick={() => setIsOpenModalNewPost(true)}
-            className="btn-small"
-          >
-            <IoMdAddCircleOutline
-              title="NewPost"
-              aria-label="adicionar post"
-              size={21}
-            />
-            Novo post
-          </button>
+      </div>
+      <main className={styles.container}>
+        <div className="container">
+          <section className={styles.newPost}>
+            <div className={styles.contents}>
+              <h2 className="title two">Suas publicações</h2>
+              <button
+                onClick={() => setIsOpenModalNewPost(true)}
+                className="btn-small"
+                >
+                <IoMdAddCircleOutline
+                  title="NewPost"
+                  aria-label="adicionar post"
+                  size={21}
+                  />
+                Novo post
+              </button>
+            </div>
+            <section >
+              <FeedList />
+            </section>
+          </section>
         </div>
-        <section>
-          <FeedList />
-        </section>
       </main>
       <Footer />
-    </>
+                  </>
   );
 };
