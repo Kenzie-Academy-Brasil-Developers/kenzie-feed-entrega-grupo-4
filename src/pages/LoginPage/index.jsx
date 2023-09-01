@@ -1,13 +1,13 @@
 import banner from "../../assets/Banner.jpeg";
+import { DefaultTemplate } from "../../components/DefaultTemplate";
 import { LoginForm } from "../../components/Forms/LoginForm";
 import { Header } from "../../components/Header";
 import styles from "./style.module.scss";
 
 export const LoginPage = () => {
   return (
-    <>
-      <Header />
-      <main className={styles.main__login}>
+    <DefaultTemplate>
+      <div className={styles.main__login}>
         <div className="container">
           <section className={styles.sectionLogin__container}>
             <figure className={styles.bannerLogin__container}>
@@ -22,7 +22,7 @@ export const LoginPage = () => {
             </div>
           </section>
         </div>
-      </main>
-    </>
+      </div>
+    </DefaultTemplate>
   );
 };

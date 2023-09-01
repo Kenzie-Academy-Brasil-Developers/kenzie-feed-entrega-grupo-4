@@ -8,7 +8,7 @@ import styles from "./style.module.scss";
 export const RegisterPage = () => {
   return (
     <DefaultTemplate>
-      <main className={styles.main}>
+      <div className={styles.main}>
         <div className="container">
           <div className={styles.containerBox}>
             <Link to={"/loginPage"} className="btn-outline icon">
@@ -28,7 +28,7 @@ export const RegisterPage = () => {
             </section>
           </div>
         </div>
-      </main>
+      </div>
     </DefaultTemplate>
   );
 };
