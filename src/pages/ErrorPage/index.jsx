@@ -11,7 +11,7 @@ export const ErrorPage = () => {
         <div className={styles.container}>
           <h1 className={styles.errorGif}>
             <span>4</span>
-            <img onClick={() => navigate("/")} src={LogoError} alt="" />
+            <img src={LogoError} alt="" />
             <span>4</span>
           </h1>
           <p>Página não encontrada</p>
