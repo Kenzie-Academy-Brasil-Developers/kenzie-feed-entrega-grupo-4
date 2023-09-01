@@ -19,7 +19,7 @@ export const PostCard = ({ post }) => {
               <img className={styles.banner} src={post.image} alt="" />
             </div>
 
-            <p className="paragraph small">Por: {post.owner}</p>
+            <p className="paragraph small">{`Por: ${post.owner}`}</p>
             <h2 className="title three">{post.title}</h2>
             <Link
               to={"/viewPost"}

@@ -6,6 +6,7 @@ import { PostsContext } from "../../providers/PostsContext";
 import { PostCard } from "../../components/PostList/PostCard";
 import { produce } from "immer";
 import { PostList } from "../../components/PostList";
+import { DefaultTemplate } from "../../components/DefaultTemplate";
 
 export const AllPostsPage = () => {
   const { postList } = useContext(PostsContext);
@@ -17,19 +18,15 @@ export const AllPostsPage = () => {
   });
 
   return (
-    <>
-      <div className="container">
-        <Header />
-        <main className={style.mainPost}>
-          <div>
-            <h1 className="title-2">Todas as notícias</h1>
-          </div>
-          <div>
-            <PostList postList={postListReversed} />
-          </div>
-        </main>
-        <Footer />
+    <DefaultTemplate>
+      <div className={style.mainPost}>
+        <div>
+          <h1 className="title-2">Todas as notícias</h1>
+        </div>
+        <div>
+          <PostList postList={postListReversed} />
+        </div>
       </div>
-    </>
+    </DefaultTemplate>
   );
 };
