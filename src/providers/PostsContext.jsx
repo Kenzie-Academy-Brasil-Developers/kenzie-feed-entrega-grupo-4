@@ -114,22 +114,19 @@ export const PostsProvider = ({ children }) => {
     },
   });
 
-  const removeLike = useMutation({
-    mutationFn: (postId) => {
-      const { token } = JSON.parse(localStorage.getItem("@UserData"));
-      return apiFeed.delete(`/likes/${postId}}`, {
+  const removeLike = (likeId) => {
+    const { token } = JSON.parse(localStorage.getItem("@UserData"));
+    try {
+      apiFeed.delete(`likes/${likeId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-    },
-    onSuccess: () => {
       revalidate();
-    },
-    onError: (err) => {
-      console.log(err);
-    },
-  });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const postForId = async (postId) => {
     try {

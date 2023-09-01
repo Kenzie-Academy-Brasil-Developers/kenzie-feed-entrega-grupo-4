@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 export const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
+  const navigate = useNavigate();
   const userLogin = async (dataLogin) => {
     try {
       const response = await apiFeed.post("login", dataLogin);
@@ -41,7 +42,7 @@ export const UserProvider = ({ children }) => {
   };
 
   const userLogout = () => {
-    localStorage.removeItem("@token-KenzieHub");
+    localStorage.removeItem("@UserData");
     navigate("/");
   };
 
