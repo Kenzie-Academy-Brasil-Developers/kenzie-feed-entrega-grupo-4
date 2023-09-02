@@ -5,6 +5,7 @@ import styles from "../ViewPost/style.module.scss";
 import { PostsContext } from "../../providers/PostsContext";
 import { apiFeed } from "../../services/api";
 import { PostList } from "../../components/PostList";
+import { toast } from "react-toastify";
 
 export const ViewPost = () => {
   const [disableLike, setDisableLike] = useState(false);
@@ -21,7 +22,7 @@ export const ViewPost = () => {
 
   useEffect(() => {
     const requestPostById = async () => {
-      const postId = localStorage.getItem("@PostId");
+      const postId = localStorage.getItem("@PostId") || {};
       const { data } = await apiFeed.get(`posts/${postId}?_embed=likes`);
       setCurrentPost(data);
     };
@@ -38,7 +39,7 @@ export const ViewPost = () => {
         <section className={styles.contents}>
           <div className={styles.viewPost}>
             <div className={styles.postTitle}>
-              <span className="paragraph">Por:{currentPost?.owner}</span>
+              <span className="paragraph">Por: {currentPost?.owner}</span>
               <h1 className="title two textCenter">{currentPost?.title}</h1>
             </div>
             <img
@@ -62,18 +63,36 @@ export const ViewPost = () => {
                 </div>
               ) : (
                 <div className={styles.liked}>
-                  <button
-                    onClick={(e) => {
-                      setDisableLike(true), addLikePost.mutate(currentPost?.id);
-                    }}
-                    disabled={disableLike}
-                  >
-                    <AiOutlineHeart
-                      size={20}
-                      type="button"
-                      className={styles.icon}
-                    />
-                  </button>
+                  {userId ? (
+                    <button
+                      onClick={(e) => {
+                        setDisableLike(true),
+                          addLikePost.mutate(currentPost?.id);
+                      }}
+                      disabled={disableLike}
+                    >
+                      <AiOutlineHeart
+                        size={20}
+                        type="button"
+                        className={styles.icon}
+                      />
+                    </button>
+                  ) : (
+                    <button
+                      onClick={(e) => {
+                        // setDisableLike(true),
+                        toast.warning("Para interagir faça o login...");
+                      }}
+                      disabled={disableLike}
+                    >
+                      <AiOutlineHeart
+                        size={20}
+                        type="button"
+                        className={styles.icon}
+                      />
+                    </button>
+                  )}
+
                   {numberLike <= 0 ? (
                     <span className="paragraph small">
                       Seja o primeiro a curtir este post

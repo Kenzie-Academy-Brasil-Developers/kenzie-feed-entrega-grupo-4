@@ -18,7 +18,7 @@ export const AllPostsPage = () => {
     <DefaultTemplate>
       <div className={style.mainPost}>
         <div>
-          <h1 className="title-2">Todas as notícias</h1>
+          <h1 className="title two">Todas as notícias</h1>
         </div>
         <div>
           <PostList postList={postListReversed} />
