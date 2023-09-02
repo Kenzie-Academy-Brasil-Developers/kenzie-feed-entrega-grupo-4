@@ -20,6 +20,8 @@ export const PostsProvider = ({ children }) => {
     setLsPost(postId);
   };
 
+  const [editingPost, setEditingPost] = useState(null);
+
   const [dataPost, setDataPost] = useState({
     id: Number,
     title: String,
@@ -166,6 +168,8 @@ export const PostsProvider = ({ children }) => {
         lsPost,
         removeLike,
         addLikePost,
+        editingPost,
+        setEditingPost,
       }}
     >
       {children}

@@ -1,7 +1,10 @@
 .header {
   display: flex;
   justify-content: space-between;
-  margin-top: 15px;
+
+  > img {
+    cursor: pointer;
+  }
 
   .userLogged {
     display: flex;
@@ -21,29 +24,27 @@
   }
 }
 
-
 .container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  background-color: var(--color-grey);
+
+  .newPost {
     display: flex;
     flex-direction: column;
-    margin-top: 15px;
-    background-color: var(--color-grey);
+    gap: 47px;
 
-    .newPost {
+    button {
       display: flex;
-      flex-direction: column;
-      gap: 47px;
-
-      button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 14px;
-      }
-      
-      
-      .contents {
-        display: flex;
-        justify-content: space-between;
-      }
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
     }
+
+    .contents {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
 }
