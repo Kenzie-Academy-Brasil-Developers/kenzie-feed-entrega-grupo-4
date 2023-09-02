@@ -17,7 +17,7 @@ export const FeedCard = ({ post }) => {
       <div className={styles.cards}>
         <div className={styles.contents}>
           <img src={post.image} alt={post.title} />
-          <h4 className="title editPost">{post.title}</h4>
+          <h4 className="title editPost textCenter">{post.title}</h4>
         </div>
 
         <div className={styles.interaction}>

@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 46px;
+  gap: 16px;
 
   .contents {
     display: flex;
@@ -32,6 +33,7 @@
 
     .contents {
       flex-direction: column;
+      gap: 80px;
 
       img {
         width: 306px;
@@ -41,11 +43,11 @@
 
     .interaction {
       position: absolute;
-      margin-top: 134px;
-      margin-right: 10px;
+      margin-top: 200px;
+      margin-right: 0px;
       gap: 45px;
-      background-color: #ffffff98;
-      padding: 18px;
+      // background-color: #dbdbdb;
+      padding: 16px;
       border-radius: 255px;
     }
   }
