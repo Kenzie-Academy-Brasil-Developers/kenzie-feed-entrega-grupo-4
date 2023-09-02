@@ -14,12 +14,11 @@ export const RegisterForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm({
     resolver: zodResolver(registerFormSchema),
   });
 
-  const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
 
   const submit = (formData) => {
     userRegister(formData);

@@ -54,9 +54,6 @@ export const PostsProvider = ({ children }) => {
       toast.success("Post editado com sucesso!");
       navigate("dashboard");
     },
-    onError: (err) => {
-      console.log(err);
-    },
   });
 
   const createPost = useMutation({
@@ -76,15 +73,11 @@ export const PostsProvider = ({ children }) => {
       setIsOpenModalNewPost(false);
       toast.success("Post criado com sucesso!");
     },
-    onError: (err) => {
-      console.log(err);
-    },
   });
 
   const deletePost = useMutation({
     mutationFn: (postId) => {
       const { token } = JSON.parse(localStorage.getItem("@UserData"));
-      console.log(postId);
       return apiFeed.delete(`/posts/${postId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -94,9 +87,6 @@ export const PostsProvider = ({ children }) => {
     onSuccess: () => {
       revalidate();
       toast.success("Post deletado com sucesso!");
-    },
-    onError: (err) => {
-      console.log(err);
     },
   });
 
@@ -130,9 +120,7 @@ export const PostsProvider = ({ children }) => {
         },
       });
       revalidate();
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const postForId = async (postId) => {
@@ -146,9 +134,7 @@ export const PostsProvider = ({ children }) => {
         owner: data.owner,
         userId: data.userId,
       });
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   return (

@@ -21,27 +21,27 @@ export const DashboardPage = () => {
   const { name } = JSON.parse(localStorage.getItem("@UserData"));
   return (
     <>
-    <div className="container">
-      <header className={styles.header}>
-        <img onClick={() => navigate("/")} src={logo} alt="logo-kz" />
-        <div className={styles.userLogged}>
-          <p className="paragraph">{name.substr(0, 1)}</p>
-          <button className="btn-outline">Dashboard</button>
-          <button>
-            <MdLogout
-              title="Logout"
-              aria-label="sair"
-              size={20}
-              onClick={() => userLogout()}
-            />
-          </button>
-        </div>
-      </header>
-      {isOpenModalNewPost ? (
-        <ModalNewPost>
-          <FormNewPost />
-        </ModalNewPost>
-      ) : null}
+      <div className="container">
+        <header className={styles.header}>
+          <img onClick={() => navigate("/")} src={logo} alt="logo-kz" />
+          <div className={styles.userLogged}>
+            <p className="paragraph">{name.substr(0, 1)}</p>
+            <button className="btn-outline">Dashboard</button>
+            <button>
+              <MdLogout
+                title="Logout"
+                aria-label="sair"
+                size={20}
+                onClick={() => userLogout()}
+              />
+            </button>
+          </div>
+        </header>
+        {isOpenModalNewPost ? (
+          <ModalNewPost>
+            <FormNewPost />
+          </ModalNewPost>
+        ) : null}
       </div>
       <main className={styles.container}>
         <div className="container">
@@ -51,22 +51,22 @@ export const DashboardPage = () => {
               <button
                 onClick={() => setIsOpenModalNewPost(true)}
                 className="btn-small"
-                >
+              >
                 <IoMdAddCircleOutline
                   title="NewPost"
                   aria-label="adicionar post"
                   size={21}
-                  />
+                />
                 Novo post
               </button>
             </div>
-            <section >
+            <section>
               <FeedList />
             </section>
           </section>
         </div>
       </main>
       <Footer />
-                  </>
+    </>
   );
 };
