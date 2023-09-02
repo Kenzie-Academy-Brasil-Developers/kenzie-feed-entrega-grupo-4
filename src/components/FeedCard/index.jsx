@@ -17,7 +17,7 @@ export const FeedCard = ({ post }) => {
       <div className={styles.cards}>
         <div className={styles.contents}>
           <img src={post.image} alt={post.title} />
-          <h4 className="titile one ">{post.title}</h4>
+          <h4 className="title editPost">{post.title}</h4>
         </div>
 
         <div className={styles.interaction}>
@@ -25,7 +25,7 @@ export const FeedCard = ({ post }) => {
             <MdEdit
               title="BtnEdit"
               aria-label="editar post"
-              size={21}
+              size={36}
               color="#55a3ff"
             />
           </button>
@@ -33,7 +33,7 @@ export const FeedCard = ({ post }) => {
             <RiDeleteBin6Line
               title="BtnDelete"
               aria-label="excluir post"
-              size={21}
+              size={36}
               color="#55a3ff"
             />
           </button>
