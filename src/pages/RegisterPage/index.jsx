@@ -1,65 +1,30 @@
-import { useForm } from "react-hook-form";
-import { Input } from "../Input";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { registerFormSchema } from "./registerFormSchema";
-import { InputPassword } from "../InputPassword";
-import { useContext, useState } from "react";
-import { UserContext } from "../../../providers/UserContext";
+import { Link } from "react-router-dom";
+import React from "react";
+import { RegisterForm } from "../../components/Forms/RegisterForm";
+import { DefaultTemplate } from "../../components/DefaultTemplate";
+import { MdArrowBack } from "react-icons/md";
 import styles from "./style.module.scss";
 
-export const RegisterForm = () => {
-  const { userRegister } = useContext(UserContext);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: zodResolver(registerFormSchema),
-  });
-
-  const [loading] = useState(false);
-
-  const submit = (formData) => {
-    userRegister(formData);
-  };
-
+export const RegisterPage = () => {
   return (
-    <form className={styles.form} onSubmit={handleSubmit(submit)}>
-      <div className={styles.inputContainer}>
-        <Input
-          type={"text"}
-          placeholder={"Nome"}
-          {...register("name")}
-          error={errors.name}
-          disabled={loading}
-        />
-        <Input
-          type={"email"}
-          placeholder={"E-mail"}
-          {...register("email")}
-          error={errors.email}
-          disabled={loading}
-        />
+    <DefaultTemplate>
+      <div className={styles.main}>
+        <div className={styles.containerBox}>
+          <Link to={"/loginPage"} className="btn-outline icon">
+            <MdArrowBack size={24} />
+            <span>Voltar</span>
+          </Link>
+          <section>
+            <h1 className="title two black textCenter">Cadastre um usuário</h1>
+            <span className="paragraph textCenter">
+              Preencha os campos corretamente para fazer login
+            </span>
+            <div>
+              <RegisterForm />
+            </div>
+          </section>
+        </div>
       </div>
-      <div className={styles.inputContainer}>
-        <InputPassword
-          placeholder={"Senha"}
-          {...register("password")}
-          error={errors.password}
-          disabled={loading}
-        />
-        <InputPassword
-          placeholder={"Confirmar senha"}
-          {...register("confirm_password")}
-          error={errors.confirm_password}
-          disabled={loading}
-        />
-      </div>
-      <button type="submit" className="btn-medium">
-        {!loading ? "Cadastre-se" : "Cadastrando..."}
-      </button>
-    </form>
+    </DefaultTemplate>
   );
 };
-
