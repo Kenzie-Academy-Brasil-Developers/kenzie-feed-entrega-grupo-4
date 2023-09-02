@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { DefaultTemplate } from "../../components/DefaultTemplate";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import styles from "../ViewPost/style.module.scss";
@@ -18,7 +18,6 @@ export const ViewPost = () => {
   const numberLike = currentPost?.likes?.length;
   const isLiked = currentPost.likes;
   const imLiked = isLiked?.filter((likes) => likes.userId === userId);
-  const btnLike = useRef(0);
 
   useEffect(() => {
     const requestPostById = async () => {

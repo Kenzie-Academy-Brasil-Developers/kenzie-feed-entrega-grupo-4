@@ -1,5 +1,3 @@
-import { Footer } from "../../components/Footer";
-import { Header } from "../../components/Header";
 import banner from "../../assets/Banner.jpeg";
 import styles from "../HomePage/style.module.scss";
 import { useNavigate } from "react-router-dom";

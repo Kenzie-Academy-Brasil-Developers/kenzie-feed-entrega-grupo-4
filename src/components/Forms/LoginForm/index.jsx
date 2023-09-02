@@ -15,12 +15,11 @@ export const LoginForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm({
     resolver: zodResolver(loginFormSchema),
   });
 
-  const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
 
   const submit = (formData) => {
     userLogin(formData);
