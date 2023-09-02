@@ -49,6 +49,13 @@
   &.link {
     font-size: 0.9375rem; //15px
   }
+  &.line {
+    border: 1px dashed var(--color-blue);
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
 
   &.blue {
     color: var(--color-blue);

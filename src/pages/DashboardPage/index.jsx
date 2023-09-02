@@ -26,14 +26,14 @@ export const DashboardPage = () => {
           <img onClick={() => navigate("/")} src={logo} alt="logo-kz" />
           <div className={styles.userLogged}>
             <p className="paragraph">{name.substr(0, 1)}</p>
-            <button className="btn-outline">Dashboard</button>
+            <button onClick={() => navigate("/")} className="btn-outline">Home</button>
             <button>
               <MdLogout
                 title="Logout"
                 aria-label="sair"
                 size={20}
                 onClick={() => userLogout()}
-              />
+                />
             </button>
           </div>
         </header>
@@ -51,12 +51,12 @@ export const DashboardPage = () => {
               <button
                 onClick={() => setIsOpenModalNewPost(true)}
                 className="btn-small"
-              >
+                >
                 <IoMdAddCircleOutline
                   title="NewPost"
                   aria-label="adicionar post"
                   size={21}
-                />
+                  />
                 Novo post
               </button>
             </div>
