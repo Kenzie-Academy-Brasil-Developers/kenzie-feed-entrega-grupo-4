@@ -38,7 +38,7 @@ export const ViewPost = () => {
         <section className={styles.contents}>
           <div className={styles.viewPost}>
             <div className={styles.postTitle}>
-              <span className="paragraph">Por:{currentPost?.owner}</span>
+              <span className="paragraph">Por: {currentPost?.owner}</span>
               <h1 className="title two textCenter">{currentPost?.title}</h1>
             </div>
             <img
