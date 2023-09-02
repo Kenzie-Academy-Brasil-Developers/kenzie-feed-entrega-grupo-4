@@ -11,7 +11,6 @@ export const FeedList = () => {
       {newPostList.length !== 0 ? ( newPostList?.map((post) => (
         <FeedCard key={post.id} post={post} />
       ))) : (<li onClick={() => setIsOpenModalNewPost(true)} className="paragraph line"><p className="paragraph bold blue textCenter">Você ainda não possui publicações</p></li>)}
-     
     </ul>
   );
 };
