@@ -6,7 +6,7 @@ import { PostsContext } from "../../providers/PostsContext";
 import { useNavigate } from "react-router-dom";
 
 export const FeedCard = ({ post }) => {
-  const { postForId, deletePost } = useContext(PostsContext);
+  const { postForId, deletePost, setEditingPost } = useContext(PostsContext);
   const navigate = useNavigate();
   const btnEdit = (postId) => {
     navigate("/editPage");
@@ -21,7 +21,7 @@ export const FeedCard = ({ post }) => {
         </div>
 
         <div className={styles.interaction}>
-          <button onClick={() => btnEdit(post.id)}>
+          <button onClick={() => (setEditingPost(post), btnEdit(post.id))}>
             <MdEdit
               title="BtnEdit"
               aria-label="editar post"

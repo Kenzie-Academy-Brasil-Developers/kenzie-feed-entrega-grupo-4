@@ -11,8 +11,15 @@ import { useForm } from "react-hook-form";
 
 export const EditPage = () => {
   const { name } = JSON.parse(localStorage.getItem("@UserData"));
-  const { dataPost, editPost } = useContext(PostsContext);
-  const { handleSubmit, register } = useForm();
+  const { dataPost, editPost, editingPost } = useContext(PostsContext);
+  const { handleSubmit, register } = useForm({
+    values: {
+      title: editingPost?.title,
+      description: editingPost?.description,
+      image: editingPost?.image,
+    },
+  });
+
   const formData = (data) => {
     const newPost = {
       id: dataPost.id,
@@ -24,6 +31,7 @@ export const EditPage = () => {
     };
     editPost.mutate(newPost);
   };
+
   return (
     <>
       <div className="container">
@@ -55,21 +63,12 @@ export const EditPage = () => {
             </div>
             <form className={style.form} onSubmit={handleSubmit(formData)}>
               <label>Titulo</label>
-              <Input
-                type={"text"}
-                defaultValue={dataPost.title}
-                {...register("title")}
-              />
+              <Input type={"text"} {...register("title", { required: true })} />
               <label>Imagem em destaque</label>
-              <Input
-                type={"text"}
-                defaultValue={dataPost.image}
-                {...register("image")}
-              />
+              <Input type={"text"} {...register("image", { required: true })} />
               <label>Conteúdo</label>
               <textarea
-                {...register("description")}
-                defaultValue={dataPost.description}
+                {...register("description", { required: true })}
               ></textarea>
               <button type="submit" className="btn-medium">
                 Salvar Post
