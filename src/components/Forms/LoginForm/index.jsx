@@ -47,7 +47,7 @@ export const LoginForm = () => {
       </button>
       <div className={styles.divRegister}>
         <span>Não é cadastrado?</span>
-        <Link to={"/register"}>Cadastre-se</Link>
+        <Link className="paragraph link blue" to={"/register"}>Cadastre-se</Link>
       </div>
     </form>
   );

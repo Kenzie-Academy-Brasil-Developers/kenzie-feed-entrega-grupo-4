@@ -5,5 +5,9 @@
 
   button {
     align-self: flex-end;
+
+    @media(max-width: 500px) {
+      width: 100%;
+    }
   }
 }
