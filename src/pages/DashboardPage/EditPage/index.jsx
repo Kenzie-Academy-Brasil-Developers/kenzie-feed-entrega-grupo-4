@@ -55,7 +55,7 @@ export const EditPage = () => {
         <div className={style.containerMain}>
           <main>
             <div className={style.headerMain}>
-              <h2 className="title-2">Editando:</h2>
+              <h2 className="title two">Editando:</h2>
               <Link to={"/dashboard"} className={style.buttonBack}>
                 <AiOutlineArrowLeft className={style.arrowIcon} />
                 <p>Voltar</p>
