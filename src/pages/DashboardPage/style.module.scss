@@ -1,0 +1,50 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  > img {
+    cursor: pointer;
+  }
+
+  .userLogged {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    p {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--color-white);
+      width: 43px;
+      height: 43px;
+      background-color: var(--color-blue);
+      border-radius: 255px;
+    }
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  background-color: var(--color-grey);
+
+  .newPost {
+    display: flex;
+    flex-direction: column;
+    gap: 47px;
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .contents {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

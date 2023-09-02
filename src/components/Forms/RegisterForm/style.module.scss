@@ -1,0 +1,35 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  width: 80vw;
+
+  .inputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 200px;
+    width: 758px;
+
+    .inputContainer {
+      display: flex;
+      flex-direction: row;
+      gap: 12px;
+    }
+
+    button {
+      align-self: flex-end;
+      margin-top: 12px;
+      padding: 0 2rem;
+    }
+  }
+}

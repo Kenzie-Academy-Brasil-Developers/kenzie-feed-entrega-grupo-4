@@ -1,48 +1,49 @@
 import { createContext } from "react";
 import { apiFeed } from "../services/api";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
+  const navigate = useNavigate();
 
   const userLogin = async (dataLogin) => {
     try {
-      const response = await apiFeed.post("/login", dataLogin);
+      const response = await apiFeed.post("login", dataLogin);
       const userData = {
         userId: response.data.user.id,
         name: response.data.user.name,
         token: response.data.accessToken,
       };
       localStorage.setItem("@UserData", JSON.stringify(userData));
+      navigate("dashboard");
+      toast.success("Logado com sucesso!");
     } catch (error) {
       toast.error("E-mail ou senha incorretos");
     }
   };
-  
-  const userRegister = async (formData, reset, setLoading) => {
+
+  const userRegister = async (formData) => {
     try {
-      setLoading(true);
-      await apiFeed.post("/users", formData);
+      const { data } = await apiFeed.post("users", formData);
       toast.success("Usuário criado com sucesso");
-      reset();
-      // navigate("/");
+      navigate("/loginPage");
     } catch (error) {
-      if (error.response.data.message === "Email already exists") {
+      if (error.response.data === "Email already exists") {
         toast.error("Usuário já cadastrado");
       }
-    } finally {
-      setLoading(false);
     }
   };
 
   const userLogout = () => {
-    localStorage.removeItem("@token-KenzieHub");
+    localStorage.removeItem("@UserData");
+    toast.success("Deslogado com sucesso");
     navigate("/");
   };
 
   return (
-    <UserContext.Provider value={{ userRegister }}>
+    <UserContext.Provider value={{ userRegister, userLogin, userLogout }}>
       {children}
     </UserContext.Provider>
   );

@@ -1,0 +1,47 @@
+.contents {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 82px;
+  justify-content: center;
+  padding: 20px;
+
+  .viewPost {
+    display: flex;
+    flex-direction: column;
+    max-width: 918px;
+    width: 100%;
+    gap: 30px;
+
+    .postTitle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .bannerPost {
+      display: flex;
+      width: 100%;
+      border-radius: 30px;
+    }
+
+    .like {
+      display: flex;
+      gap: 10px;
+    }
+  }
+
+  svg {
+    transition: 1s;
+    color: var(--color-blue);
+  }
+}
+.more {
+  margin-bottom: 38px;
+}
+.liked {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}

@@ -1,0 +1,10 @@
+.postList {
+  display: grid;
+  grid-template-columns: 1fr;
+  flex-wrap: wrap;
+  gap: 40px;
+
+  @media (min-width: 620px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}

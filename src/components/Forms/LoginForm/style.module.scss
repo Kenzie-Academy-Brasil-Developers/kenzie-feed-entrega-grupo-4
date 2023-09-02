@@ -1,0 +1,29 @@
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 80vw;
+
+  .inputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .divRegister {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .loginForm {
+    width: 370px;
+
+    button {
+      margin-top: 10px;
+    }
+  }
+}

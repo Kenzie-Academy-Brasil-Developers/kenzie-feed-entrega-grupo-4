@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 50px;
+  margin-bottom: 139px;
+
+  .banner {
+    img {
+      display: none;
+    }
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      margin-top: 35px;
+      margin-bottom: 38px;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    margin-top: 157px;
+    flex-direction: row;
+    gap: 156px;
+    .banner {
+      img {
+        display: block;
+        width: 581px;
+        height: 662px;
+        border-radius: 45px;
+        object-fit: cover;
+      }
+    }
+  }
+}

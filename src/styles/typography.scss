@@ -1,0 +1,65 @@
+.title {
+  font-family: var(--font-title);
+  font-weight: 700;
+
+  &.one {
+    font-size: clamp(2.125rem, 4vw, 3.25rem); // 34px. 52px
+  }
+  &.two {
+    font-size: clamp(1.875rem, 4vw, 2.75rem); // 30px. 44px
+  }
+  &.three {
+    font-size: 1.4375rem; //23px
+  }
+  &.post {
+    font-size: clamp(1.75rem, 4vw, 2.25rem); // 28px. 36px
+  }
+  &.textCenter {
+    text-align: center;
+  }
+
+  &.blue {
+    color: var(--color-blue);
+  }
+  &.black {
+    color: var(--color-black);
+  }
+  &.white {
+    color: var(--color-white);
+  }
+}
+
+.paragraph {
+  font-weight: 400;
+  line-height: 1.6;
+  font-size: clamp(1.0625rem, 4vw, 1.125rem); //17px, 18px
+
+  &.small {
+    font-size: 0.875rem; //14px
+  }
+
+  &.bold {
+    font-weight: 700;
+  }
+
+  &.textCenter {
+    text-align: center;
+  }
+
+  &.link {
+    font-size: 0.9375rem; //15px
+  }
+
+  &.blue {
+    color: var(--color-blue);
+  }
+  &.black {
+    color: var(--color-black);
+  }
+  &.white {
+    color: var(--color-white);
+  }
+  &.red {
+    color: var(--color-red);
+  }
+}
