@@ -19,12 +19,12 @@ export const RoutesMain = () => {
       </Route>
 
       <Route path="/" element={<HomePage />} />
-      <Route path="/editPage" element={<EditPage />} />
       <Route path="/allPosts" element={<AllPostsPage />} />
       <Route path="/viewPost" element={<ViewPost />} />
       <Route path="*" element={<ErrorPage />} />
 
       <Route element={<PrivateRoutesCommon />}>
+        <Route path="/editPage" element={<EditPage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
       </Route>
     </Routes>

@@ -50,8 +50,8 @@ export const PostsProvider = ({ children }) => {
       });
     },
     onSuccess: () => {
-      revalidate();
       toast.success("Post editado com sucesso!");
+      revalidate();
       navigate("dashboard");
     },
   });
@@ -69,9 +69,9 @@ export const PostsProvider = ({ children }) => {
       });
     },
     onSuccess: () => {
+      toast.success("Post criado com sucesso!");
       revalidate();
       setIsOpenModalNewPost(false);
-      toast.success("Post criado com sucesso!");
     },
   });
 
@@ -85,8 +85,8 @@ export const PostsProvider = ({ children }) => {
       });
     },
     onSuccess: () => {
+      toast.warning("Post deletado com sucesso!");
       revalidate();
-      toast.success("Post deletado com sucesso!");
     },
   });
 

@@ -6,12 +6,19 @@ import logo from "../../../assets/logo.svg";
 import { Footer } from "../../../components/Footer";
 import { useContext } from "react";
 import { PostsContext } from "../../../providers/PostsContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 export const EditPage = () => {
   const { name } = JSON.parse(localStorage.getItem("@UserData"));
   const { dataPost, editPost, editingPost } = useContext(PostsContext);
+
+  const navigate = useNavigate();
+
+  if (!editingPost) {
+    navigate("/dashboard");
+  }
+
   const { handleSubmit, register } = useForm({
     values: {
       title: editingPost?.title,
