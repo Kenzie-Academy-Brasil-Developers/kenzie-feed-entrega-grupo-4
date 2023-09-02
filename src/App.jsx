@@ -12,7 +12,7 @@ function App() {
     <>
       {isLoading ? <Loading /> : <RoutesMain />}
 
-      <ToastContainer position="bottom-right" autoClose={1.5 * 1000} />
+      <ToastContainer position="top-right" autoClose={1.5 * 1000} />
     </>
   );
 }

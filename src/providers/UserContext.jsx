@@ -38,7 +38,7 @@ export const UserProvider = ({ children }) => {
 
   const userLogout = () => {
     localStorage.removeItem("@UserData");
-    toast.success("Deslogado com sucesso");
+    toast.warning("Deslogado com sucesso");
     navigate("/");
   };
 
